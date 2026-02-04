@@ -9,6 +9,11 @@ binding = "DB"
 database_name = "referral-analytics-db"
 database_id = "50aa2341-12ad-406d-8905-f40b398c8dc0"
 
+# Email sending binding (Cloudflare Email Workers)
+[[send_email]]
+name = "EMAIL"
+destination_address = "pixelandcodestudios@gmail.com"
+
 # Environment variables
 [vars]
 FROM_EMAIL = "notifications@referralnetwork.com"

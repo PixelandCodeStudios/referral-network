@@ -12,7 +12,7 @@
    FONTS — Elegant Typography
    ═══════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap");
 
 /* ═══════════════════════════════════════════════════════════════
    DESIGN TOKENS — Premium Foundation
@@ -20,36 +20,36 @@
 
 :root {
   /* DARK PALETTE — Sophisticated Base */
-  --color-void: #0a0a0b;              /* Deepest black */
-  --color-bg-primary: #111113;         /* Rich dark */
-  --color-bg-secondary: #18181b;       /* Elevated surfaces */
-  --color-bg-elevated: #1f1f23;        /* Cards and modals */
-  --color-bg-hover: #27272b;           /* Interactive states */
+  --color-void: #0a0a0b; /* Deepest black */
+  --color-bg-primary: #111113; /* Rich dark */
+  --color-bg-secondary: #18181b; /* Elevated surfaces */
+  --color-bg-elevated: #1f1f23; /* Cards and modals */
+  --color-bg-hover: #27272b; /* Interactive states */
 
   /* LIGHT PALETTE — Contrast Areas */
-  --color-light-cream: #f5f3ef;        /* Warm cream */
-  --color-light-warm: #ebe8e2;         /* Soft warm white */
-  --color-light-accent: #e0dcd4;       /* Muted accent */
-  --color-text-on-light: #1a1816;      /* Dark text on light */
-  --color-text-secondary-on-light: #4a4744;  /* Secondary text on light */
+  --color-light-cream: #f5f3ef; /* Warm cream */
+  --color-light-warm: #ebe8e2; /* Soft warm white */
+  --color-light-accent: #e0dcd4; /* Muted accent */
+  --color-text-on-light: #1a1816; /* Dark text on light */
+  --color-text-secondary-on-light: #4a4744; /* Secondary text on light */
 
   /* METALLIC ACCENTS — Premium Feel */
-  --color-gold: #c9a227;               /* Primary accent */
-  --color-gold-light: #e3c765;         /* Highlight */
-  --color-gold-dark: #9a7b1c;          /* Deep gold */
-  --color-copper: #b87333;             /* Warm metallic */
-  --color-bronze: #cd7f32;             /* Rich bronze */
+  --color-gold: #c9a227; /* Primary accent */
+  --color-gold-light: #e3c765; /* Highlight */
+  --color-gold-dark: #9a7b1c; /* Deep gold */
+  --color-copper: #b87333; /* Warm metallic */
+  --color-bronze: #cd7f32; /* Rich bronze */
 
   /* COMPLEMENTARY — Depth & Balance */
-  --color-teal: #2dd4bf;               /* Cool accent */
-  --color-teal-muted: #14b8a6;         /* Subtle teal */
-  --color-slate: #64748b;              /* Neutral mid */
-  --color-slate-light: #94a3b8;        /* Light neutral */
+  --color-teal: #2dd4bf; /* Cool accent */
+  --color-teal-muted: #14b8a6; /* Subtle teal */
+  --color-slate: #64748b; /* Neutral mid */
+  --color-slate-light: #94a3b8; /* Light neutral */
 
   /* TEXT HIERARCHY */
-  --color-text-primary: #fafaf9;       /* Crisp white */
-  --color-text-secondary: #a1a1aa;     /* Soft gray */
-  --color-text-tertiary: #71717a;      /* Muted */
+  --color-text-primary: #fafaf9; /* Crisp white */
+  --color-text-secondary: #a1a1aa; /* Soft gray */
+  --color-text-tertiary: #71717a; /* Muted */
   --color-text-accent: var(--color-gold-light);
 
   /* BORDERS & DIVIDERS */
@@ -58,25 +58,41 @@
   --color-border-accent: rgba(201, 162, 39, 0.3);
 
   /* GRADIENTS — Artistic Depth */
-  --gradient-gold: linear-gradient(135deg, var(--color-gold) 0%, var(--color-copper) 100%);
-  --gradient-dark: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-void) 100%);
+  --gradient-gold: linear-gradient(
+    135deg,
+    var(--color-gold) 0%,
+    var(--color-copper) 100%
+  );
+  --gradient-dark: linear-gradient(
+    180deg,
+    var(--color-bg-primary) 0%,
+    var(--color-void) 100%
+  );
   --gradient-card: linear-gradient(145deg, #2a2a2f 0%, #1f1f23 100%);
-  --gradient-glow: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
-  --gradient-card-light: linear-gradient(145deg, var(--color-light-cream) 0%, var(--color-light-warm) 100%);
+  --gradient-glow: radial-gradient(
+    ellipse at center,
+    rgba(201, 162, 39, 0.15) 0%,
+    transparent 70%
+  );
+  --gradient-card-light: linear-gradient(
+    145deg,
+    var(--color-light-cream) 0%,
+    var(--color-light-warm) 100%
+  );
 
   /* TYPOGRAPHY — Refined Type Scale */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --font-size-xs: 0.75rem;     /* 12px */
-  --font-size-sm: 0.875rem;    /* 14px */
-  --font-size-base: 1rem;      /* 16px */
-  --font-size-lg: 1.125rem;    /* 18px */
-  --font-size-xl: 1.25rem;     /* 20px */
-  --font-size-2xl: 1.75rem;    /* 28px */
-  --font-size-3xl: 2.5rem;     /* 40px */
-  --font-size-4xl: 3.5rem;     /* 56px */
-  --font-size-5xl: 4.5rem;     /* 72px */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.75rem; /* 28px */
+  --font-size-3xl: 2.5rem; /* 40px */
+  --font-size-4xl: 3.5rem; /* 56px */
+  --font-size-5xl: 4.5rem; /* 72px */
 
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -132,12 +148,13 @@
   --transition-elegant: 600ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    RESET & BASE
    ═══════════════════════════════════════════════════════════════ */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -163,7 +180,7 @@ body {
 
 /* Subtle texture overlay */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -178,7 +195,6 @@ body::before {
 body > * {
   position: relative;
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    LAYOUT UTILITIES
@@ -215,12 +231,16 @@ body > * {
   }
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    TYPOGRAPHY
    ═══════════════════════════════════════════════════════════════ */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
@@ -271,7 +291,6 @@ a:hover {
   }
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    HEADER — Hero Section
    ═══════════════════════════════════════════════════════════════ */
@@ -286,7 +305,7 @@ a:hover {
 
 /* Ambient glow behind header */
 .site-header::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: 50%;
@@ -300,14 +319,19 @@ a:hover {
 
 /* Decorative line */
 .site-header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 200px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold),
+    transparent
+  );
 }
 
 .site-title {
@@ -355,7 +379,7 @@ a:hover {
 }
 
 .site-emblem::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 4px;
   border: 1px solid var(--color-gold);
@@ -434,7 +458,6 @@ a:hover {
   }
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    PARTNER GRID — Masonry-Inspired Layout
    ═══════════════════════════════════════════════════════════════ */
@@ -458,7 +481,6 @@ a:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    PARTNER CARD — Premium Interactive Cards
@@ -484,30 +506,40 @@ a:hover {
 
 /* Subtle inner glow on hover */
 .partner-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at top left, rgba(201, 162, 39, 0.08) 0%, transparent 50%);
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(201, 162, 39, 0.08) 0%,
+    transparent 50%
+  );
   opacity: 0;
   transition: opacity var(--transition-slow);
 }
 
 /* Corner accent */
 .partner-card::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, transparent 50%, rgba(154, 123, 28, 0.08) 50%);
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(154, 123, 28, 0.08) 50%
+  );
   transition: all var(--transition-slow);
 }
 
 .partner-card:hover {
   transform: translateY(-4px);
   border-color: var(--color-gold);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15), 0 0 40px rgba(201, 162, 39, 0.1);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(201, 162, 39, 0.1);
 }
 
 .partner-card:hover::before {
@@ -517,7 +549,11 @@ a:hover {
 .partner-card:hover::after {
   width: 150px;
   height: 150px;
-  background: linear-gradient(135deg, transparent 50%, rgba(154, 123, 28, 0.12) 50%);
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(154, 123, 28, 0.12) 50%
+  );
 }
 
 .partner-card:active {
@@ -543,7 +579,7 @@ a:hover {
 
 /* Decorative frame */
 .partner-avatar::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 6px;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -699,7 +735,6 @@ a:hover {
   }
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    TRUST SECTION — Elegant Statement
    ═══════════════════════════════════════════════════════════════ */
@@ -713,12 +748,17 @@ a:hover {
 /* Decorative borders */
 .trust-section::before,
 .trust-section::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold-dark),
+    transparent
+  );
 }
 
 .trust-section::before {
@@ -783,7 +823,6 @@ a:hover {
   }
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    FOOTER — Minimal & Refined
    ═══════════════════════════════════════════════════════════════ */
@@ -846,7 +885,6 @@ a:hover {
   opacity: 0.5;
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    PARTNER PAGE — Individual Brand Expression
    ═══════════════════════════════════════════════════════════════ */
@@ -859,7 +897,11 @@ a:hover {
 }
 
 .partner-hero {
-  background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-secondary) 0%,
+    var(--color-bg-primary) 100%
+  );
   padding: var(--space-4xl) 0;
   text-align: center;
   position: relative;
@@ -867,7 +909,7 @@ a:hover {
 }
 
 .partner-hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
@@ -889,13 +931,15 @@ a:hover {
   justify-content: center;
   margin-bottom: var(--space-xl);
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), var(--shadow-glow);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    var(--shadow-glow);
   position: relative;
 }
 
 /* Decorative frame */
 .partner-hero-avatar::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 6px;
   border: 1px solid transparent;
@@ -961,7 +1005,6 @@ a:hover {
   flex-wrap: wrap;
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    BUTTONS — Premium CTAs
    ═══════════════════════════════════════════════════════════════ */
@@ -1007,7 +1050,6 @@ a:hover {
 .btn-icon {
   margin-left: var(--space-sm);
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    CONTACT FORM — Elegant Inputs
@@ -1083,7 +1125,6 @@ a:hover {
   width: 100%;
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    BACK LINK
    ═══════════════════════════════════════════════════════════════ */
@@ -1112,7 +1153,6 @@ a:hover {
   transform: translateX(-4px);
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    ACCESSIBILITY
    ═══════════════════════════════════════════════════════════════ */
@@ -1137,31 +1177,59 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-
 /* ═══════════════════════════════════════════════════════════════
    UTILITY CLASSES
    ═══════════════════════════════════════════════════════════════ */
 
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
 
-.text-gold { color: var(--color-gold); }
-.text-muted { color: var(--color-text-tertiary); }
+.text-gold {
+  color: var(--color-gold);
+}
+.text-muted {
+  color: var(--color-text-tertiary);
+}
 
-.mb-sm { margin-bottom: var(--space-sm); }
-.mb-md { margin-bottom: var(--space-md); }
-.mb-lg { margin-bottom: var(--space-lg); }
-.mb-xl { margin-bottom: var(--space-xl); }
+.mb-sm {
+  margin-bottom: var(--space-sm);
+}
+.mb-md {
+  margin-bottom: var(--space-md);
+}
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+.mb-xl {
+  margin-bottom: var(--space-xl);
+}
 
-.mt-xs { margin-top: var(--space-xs); }
-.mt-sm { margin-top: var(--space-sm); }
-.mt-md { margin-top: var(--space-md); }
-.mt-lg { margin-top: var(--space-lg); }
-.mt-xl { margin-top: var(--space-xl); }
+.mt-xs {
+  margin-top: var(--space-xs);
+}
+.mt-sm {
+  margin-top: var(--space-sm);
+}
+.mt-md {
+  margin-top: var(--space-md);
+}
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+.mt-xl {
+  margin-top: var(--space-xl);
+}
 
-.hidden { display: none; }
-
+.hidden {
+  display: none;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION MODIFIERS
@@ -1176,7 +1244,6 @@ textarea:focus-visible {
 .section--light {
   background: var(--color-light-warm);
 }
-
 
 /* ═══════════════════════════════════════════════════════════════
    ANIMATIONS
@@ -1212,10 +1279,305 @@ textarea:focus-visible {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-.partner-card:nth-child(1) { animation-delay: 0.1s; }
-.partner-card:nth-child(2) { animation-delay: 0.2s; }
-.partner-card:nth-child(3) { animation-delay: 0.3s; }
-.partner-card:nth-child(4) { animation-delay: 0.4s; }
-.partner-card:nth-child(5) { animation-delay: 0.5s; }
-.partner-card:nth-child(6) { animation-delay: 0.6s; }
-.partner-card:nth-child(7) { animation-delay: 0.7s; }
+.partner-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.partner-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.partner-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.partner-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.partner-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.partner-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.partner-card:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PARTNER-SPECIFIC BRANDING
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Import fonts for Tiffany McAlister / Dream Living Florida */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@400;500;600&display=swap");
+
+/* ───────────────────────────────────────────────────────────────
+   BRIAN DOW — Healthcare Solutions Team
+   ─────────────────────────────────────────────────────────────── */
+
+.partner-brian-dow {
+  /* HST Brand Colors */
+  --color-accent-primary: #0b70be;
+  --color-accent-secondary: #09a223;
+  --color-accent-hover: #095a9a;
+  --color-accent-tertiary: #faa634;
+}
+
+.partner-brian-dow .btn--primary {
+  background-color: var(--color-accent-primary);
+  border-radius: 9999px;
+  padding: calc(0.667em + 2px) calc(1.333em + 2px);
+  font-size: 1.125em;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.partner-brian-dow .btn--primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: scale(1.02);
+}
+
+.partner-brian-dow .btn--secondary {
+  border-radius: 9999px;
+  border: 2px solid var(--color-accent-primary);
+}
+
+.partner-brian-dow .btn--secondary:hover {
+  background-color: var(--color-accent-secondary);
+  border-color: var(--color-accent-secondary);
+  color: white;
+}
+
+.partner-brian-dow .partner-hero {
+  background: linear-gradient(135deg, var(--color-accent-primary), #0d8ad8);
+}
+
+.partner-brian-dow .partner-hero-name,
+.partner-brian-dow .partner-hero-role {
+  color: white;
+}
+
+.partner-brian-dow .partner-content h2 {
+  color: var(--color-accent-primary);
+}
+
+/* ───────────────────────────────────────────────────────────────
+   JOSHUA NAYLOR — The Naylor Group
+   ─────────────────────────────────────────────────────────────── */
+
+.partner-joshua-naylor {
+  /* Naylor Group Brand Colors */
+  --color-accent-primary: #d13030;
+  --color-accent-secondary: #ca2c1d;
+  --color-accent-hover: #a82525;
+  --color-text-primary: #212121;
+  --color-bg-light: #f6f8fa;
+}
+
+.partner-joshua-naylor .btn--primary {
+  background-color: var(--color-accent-primary);
+  border-radius: 4px;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 4px rgba(209, 48, 48, 0.2);
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+}
+
+.partner-joshua-naylor .btn--primary:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 4px 8px rgba(209, 48, 48, 0.3);
+  transform: translateY(-2px);
+}
+
+.partner-joshua-naylor .btn--secondary {
+  border-radius: 4px;
+  border: 2px solid var(--color-accent-primary);
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.partner-joshua-naylor .btn--secondary:hover {
+  background-color: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  color: white;
+}
+
+.partner-joshua-naylor .partner-hero {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-primary),
+    var(--color-accent-secondary)
+  );
+}
+
+.partner-joshua-naylor .partner-hero-name,
+.partner-joshua-naylor .partner-hero-role {
+  color: white;
+}
+
+.partner-joshua-naylor .partner-content h2 {
+  color: var(--color-accent-primary);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.partner-joshua-naylor .partner-bio {
+  color: var(--color-text-primary);
+}
+
+/* ───────────────────────────────────────────────────────────────
+   TIFFANY MCALISTER — Dream Living Florida
+   ─────────────────────────────────────────────────────────────── */
+
+.partner-tiffany-mcalister {
+  /* Dream Living Brand Colors */
+  --color-accent-primary: #008cba;
+  --color-accent-secondary: #0fc502;
+  --color-accent-hover: #007095;
+  --color-text-primary: #333;
+  --color-text-secondary: #637589;
+  --color-border: #e0e0e0;
+
+  /* Dream Living Typography */
+  --font-primary: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  --font-headings:
+    "Helvetica Neue", Helvetica, "Segoe UI", Ubuntu, Arial, sans-serif;
+  --font-decorative: "Playfair Display", serif;
+  --font-accent: "Montserrat", sans-serif;
+  --spacing-base: 0.9375rem;
+}
+
+.partner-tiffany-mcalister .btn--primary {
+  background: linear-gradient(180deg, var(--color-accent-secondary), #0b9302);
+  border-radius: 4px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 0 1px rgba(0, 0, 0, 0.8);
+  transition: all 0.25s ease;
+  font-family: var(--font-accent);
+}
+
+.partner-tiffany-mcalister .btn--primary:hover {
+  background: linear-gradient(0deg, var(--color-accent-secondary), #0b9302);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 0 2px rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.partner-tiffany-mcalister .btn--secondary {
+  border-radius: 4px;
+  border: 2px solid var(--color-accent-primary);
+  padding: 1rem 2rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  font-family: var(--font-accent);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.partner-tiffany-mcalister .btn--secondary:hover {
+  background-color: var(--color-accent-primary);
+  border-color: var(--color-accent-hover);
+  color: white;
+}
+
+.partner-tiffany-mcalister .partner-hero {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-primary),
+    var(--color-accent-hover)
+  );
+}
+
+.partner-tiffany-mcalister .partner-hero-name {
+  color: white;
+  font-family: var(--font-headings);
+  font-weight: 500;
+}
+
+.partner-tiffany-mcalister .partner-hero-role {
+  color: white;
+  font-family: var(--font-accent);
+  font-weight: 500;
+}
+
+.partner-tiffany-mcalister .partner-content {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.partner-tiffany-mcalister .partner-content h2 {
+  color: var(--color-accent-primary);
+  font-size: 2.3125rem;
+  font-weight: 500;
+  font-family: var(--font-headings);
+}
+
+.partner-tiffany-mcalister .partner-bio {
+  color: var(--color-text-primary);
+}
+
+.partner-tiffany-mcalister .form-input,
+.partner-tiffany-mcalister .form-textarea {
+  border-radius: 0px;
+  border: 1px solid var(--color-border);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.partner-tiffany-mcalister .form-label {
+  font-size: 0.875rem;
+  font-weight: normal;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   TOM BERRY — Longview Wealth Advisors
+   ─────────────────────────────────────────────────────────────── */
+
+.partner-tom-berry {
+  /* Longview Brand Colors */
+  --color-accent-primary: #2d5f4f;
+  --color-accent-secondary: #00a651;
+  --color-accent-hover: #234a3d;
+
+  /* Longview-specific design tokens */
+  --radius-md: 4px;
+  --shadow-button: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.partner-tom-berry .btn--primary {
+  background-color: var(--color-accent-secondary);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  box-shadow: var(--shadow-button);
+  transition: all 0.2s ease;
+}
+
+.partner-tom-berry .btn--primary:hover {
+  background-color: #009147;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 166, 81, 0.3);
+}
+
+.partner-tom-berry .partner-hero {
+  background: linear-gradient(135deg, var(--color-accent-primary), #3a7560);
+}
+
+.partner-tom-berry .partner-hero-name,
+.partner-tom-berry .partner-hero-role {
+  color: white;
+}
+
+.partner-tom-berry .partner-content h2 {
+  color: var(--color-accent-primary);
+  font-weight: 700;
+}

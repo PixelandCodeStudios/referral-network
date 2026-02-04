@@ -1,284 +1,420 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Midlife Mafia — Trusted Network</title>
-  <meta name="description" content="A curated network of elite professionals. Vetted. Trusted. Connected.">
-  <meta name="theme-color" content="#111113">
-  <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midlife Mafia — Trusted Network</title>
+    <meta
+      name="description"
+      content="A curated network of elite professionals. Vetted. Trusted. Connected."
+    />
+    <meta name="theme-color" content="#111113" />
+    <link rel="stylesheet" href="styles.css" />
 
-  <!-- Preconnect for fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Analytics -->
-  <script src="analytics.js" defer></script>
-</head>
+    <!-- Analytics -->
+    <script src="analytics.js" defer></script>
+  </head>
 
-<body>
-
-  <!-- ═══════════════════════════════════════════════════════════
+  <body>
+    <!-- ═══════════════════════════════════════════════════════════
        HEADER — Hero with Brand Identity
        ═══════════════════════════════════════════════════════════ -->
-  <header class="site-header">
-    <div class="container">
+    <header class="site-header">
+      <div class="container">
+        <!-- Emblem -->
+        <div class="site-emblem">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+        </div>
 
-      <!-- Emblem -->
-      <div class="site-emblem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5"/>
-          <path d="M2 12l10 5 10-5"/>
-        </svg>
+        <!-- Brand Title -->
+        <h1 class="site-title"><span>Midlife Mafia</span></h1>
+
+        <!-- Tagline -->
+        <p class="site-tagline">Vetted Professionals. Trusted Network.</p>
       </div>
+    </header>
 
-      <!-- Brand Title -->
-      <h1 class="site-title"><span>Midlife Mafia</span></h1>
-
-      <!-- Tagline -->
-      <p class="site-tagline">
-        Vetted Professionals. Trusted Network.
-      </p>
-
-    </div>
-  </header>
-
-  <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
        PARTNER GRID — The Inner Circle
        ═══════════════════════════════════════════════════════════ -->
-  <section class="section section--light">
-    <div class="container">
-      <div class="partner-grid">
-
-        <!-- Partner 1 - Brian Dow -->
-        <a
-          href="brian-dow.html?id=brian-dow&source=hub"
-          class="partner-card"
-          data-partner-id="brian-dow"
-          data-referrer-id=""
-        >
-          <div class="partner-avatar">
-            <img src="images/brian-dow.jpg" alt="Brian Dow">
-          </div>
-
-          <div class="partner-info">
-            <h3 class="partner-name">Brian Dow</h3>
-            <div class="partner-role">Health Insurance Solutions</div>
-
-            <div class="partner-contact">
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                </svg>
-                myhst.com
-              </div>
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                (630) 261-3000
-              </div>
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                sales@myhst.com
-              </div>
+    <section class="section section--light">
+      <div class="container">
+        <div class="partner-grid">
+          <!-- Partner 1 - Brian Dow -->
+          <a
+            href="brian-dow.html?id=brian-dow&source=hub"
+            class="partner-card"
+            data-partner-id="brian-dow"
+            data-referrer-id=""
+          >
+            <div class="partner-avatar">
+              <img src="images/brian-dow.jpg" alt="Brian Dow" />
             </div>
 
-            <span class="partner-cta">
-              View Profile
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </span>
-          </div>
-        </a>
+            <div class="partner-info">
+              <h3 class="partner-name">Brian Dow</h3>
+              <div class="partner-role">Health Insurance Solutions</div>
 
-        <!-- Partner 2 - Joshua Naylor -->
-        <a
-          href="joshua-naylor.html?id=joshua-naylor&source=hub"
-          class="partner-card"
-          data-partner-id="joshua-naylor"
-          data-referrer-id=""
-        >
-          <div class="partner-avatar">
-            <img src="images/joshua-naylor.jpg" alt="Joshua Naylor">
-          </div>
+              <div class="partner-contact">
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                    />
+                    <path
+                      d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                    />
+                  </svg>
+                  myhst.com
+                </div>
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                  (630) 261-3000
+                </div>
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  sales@myhst.com
+                </div>
+              </div>
 
-          <div class="partner-info">
-            <h3 class="partner-name">Joshua Naylor</h3>
-            <div class="partner-role">Mortgage Lending</div>
+              <span class="partner-cta">
+                View Profile
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </span>
+            </div>
+          </a>
 
-            <div class="partner-contact">
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                </svg>
-                thenaylorgroup.com
-              </div>
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                (727) 482-6093
-              </div>
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                josh@thenaylorgroup.com
-              </div>
+          <!-- Partner 2 - Joshua Naylor -->
+          <a
+            href="joshua-naylor.html?id=joshua-naylor&source=hub"
+            class="partner-card"
+            data-partner-id="joshua-naylor"
+            data-referrer-id=""
+          >
+            <div class="partner-avatar">
+              <img src="images/joshua-naylor.jpg" alt="Joshua Naylor" />
             </div>
 
-            <span class="partner-cta">
-              View Profile
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </span>
-          </div>
-        </a>
+            <div class="partner-info">
+              <h3 class="partner-name">Joshua Naylor</h3>
+              <div class="partner-role">Mortgage Lending</div>
 
-        <!-- Partner 3 - Tiffany McAlister -->
-        <a
-          href="tiffany-mcalister.html?id=tiffany-mcalister&source=hub"
-          class="partner-card"
-          data-partner-id="tiffany-mcalister"
-          data-referrer-id=""
-        >
-          <div class="partner-avatar">
-            <img src="images/tiffany-mcalister.jpg" alt="Tiffany McAlister">
-          </div>
+              <div class="partner-contact">
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                    />
+                    <path
+                      d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                    />
+                  </svg>
+                  thenaylorgroup.com
+                </div>
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                  (727) 482-6093
+                </div>
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  josh@thenaylorgroup.com
+                </div>
+              </div>
 
-          <div class="partner-info">
-            <h3 class="partner-name">Tiffany McAlister</h3>
-            <div class="partner-role">Real Estate</div>
+              <span class="partner-cta">
+                View Profile
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </span>
+            </div>
+          </a>
 
-            <div class="partner-contact">
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                </svg>
-                dreamlivingflorida.com
-              </div>
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                (417) 522-5669
-              </div>
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                tiffany@dreamlivingflorida.com
-              </div>
+          <!-- Partner 3 - Tiffany McAlister -->
+          <a
+            href="tiffany-mcalister.html?id=tiffany-mcalister&source=hub"
+            class="partner-card"
+            data-partner-id="tiffany-mcalister"
+            data-referrer-id=""
+          >
+            <div class="partner-avatar">
+              <img src="images/tiffany-mcalister.jpg" alt="Tiffany McAlister" />
             </div>
 
-            <span class="partner-cta">
-              View Profile
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </span>
-          </div>
-        </a>
+            <div class="partner-info">
+              <h3 class="partner-name">Tiffany McAlister</h3>
+              <div class="partner-role">Real Estate</div>
 
-        <!-- Partner 4 - Tom Berry -->
-        <a
-          href="tom-berry.html?id=tom-berry&source=hub"
-          class="partner-card"
-          data-partner-id="tom-berry"
-          data-referrer-id=""
-        >
-          <div class="partner-avatar">
-            <img src="images/tom-berry.jpg" alt="Tom Berry">
-          </div>
-
-          <div class="partner-info">
-            <h3 class="partner-name">Tom Berry</h3>
-            <div class="partner-role">Wealth Management</div>
-
-            <div class="partner-contact">
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                </svg>
-                longviewwealthadvisors.com
+              <div class="partner-contact">
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                    />
+                    <path
+                      d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                    />
+                  </svg>
+                  dreamlivingflorida.com
+                </div>
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                  (417) 522-5669
+                </div>
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  tiffany@dreamlivingflorida.com
+                </div>
               </div>
-              <div class="partner-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
+
+              <span class="partner-cta">
+                View Profile
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="9 18 15 12 9 6" />
                 </svg>
-                info@longviewwealthadvisors.com
-              </div>
+              </span>
+            </div>
+          </a>
+
+          <!-- Partner 4 - Tom Berry -->
+          <a
+            href="tom-berry.html?id=tom-berry&source=hub"
+            class="partner-card"
+            data-partner-id="tom-berry"
+            data-referrer-id=""
+          >
+            <div class="partner-avatar">
+              <img src="images/tom-berry.jpg" alt="Tom Berry" />
             </div>
 
-            <span class="partner-cta">
-              View Profile
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </span>
-          </div>
-        </a>
+            <div class="partner-info">
+              <h3 class="partner-name">Tom Berry</h3>
+              <div class="partner-role">Wealth Management</div>
 
+              <div class="partner-contact">
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                    />
+                    <path
+                      d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                    />
+                  </svg>
+                  longviewwealthadvisors.com
+                </div>
+                <div class="partner-contact-item">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  info@longviewwealthadvisors.com
+                </div>
+              </div>
+
+              <span class="partner-cta">
+                View Profile
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
        TRUST SECTION — The Code
        ═══════════════════════════════════════════════════════════ -->
-  <section class="section trust-section">
-    <div class="container">
-      <div class="trust-content">
-        <h2>The Inner Circle</h2>
-        <p>
-          Every member of this network has been personally vetted through experience and collaboration and proven results. No paid placements. No compromises. Just professionals who deliver.
-        </p>
+    <section class="section trust-section">
+      <div class="container">
+        <div class="trust-content">
+          <h2>The Inner Circle</h2>
+          <p>
+            Every member of this network has been personally vetted through
+            experience and collaboration and proven results. No paid placements.
+            No compromises. Just professionals who deliver.
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
        FOOTER — Minimal & Premium
        ═══════════════════════════════════════════════════════════ -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">Midlife Mafia</div>
 
-        <div class="footer-brand">Midlife Mafia</div>
+          <div class="footer-divider"></div>
 
-        <div class="footer-divider"></div>
+          <p class="footer-text">
+            An independent network of trusted professionals. All recommendations
+            are based on personal experience and proven track records.
+          </p>
 
-        <p class="footer-text">
-          An independent network of trusted professionals. All recommendations are based on personal experience and proven track records.
-        </p>
+          <p class="footer-text mt-lg">
+            Privacy-first analytics. No third-party data sharing.
+          </p>
 
-        <p class="footer-text mt-lg">
-          Privacy-first analytics. No third-party data sharing.
-        </p>
-
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="#" class="footer-link">Privacy</a>
-          <a href="#" class="footer-link">Terms</a>
-          <a href="#" class="footer-link">Contact</a>
-        </nav>
-
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="#" class="footer-link">Privacy</a>
+            <a href="#" class="footer-link">Terms</a>
+            <a href="#" class="footer-link">Contact</a>
+          </nav>
+        </div>
       </div>
-    </div>
-  </footer>
-
-</body>
+    </footer>
+  </body>
 </html>

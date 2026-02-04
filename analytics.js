@@ -20,36 +20,34 @@
   - Build a simple dashboard to view insights
 */
 
-
 // ═══════════════════════════════════════════════════════════════
 // CONFIGURATION
 // ═══════════════════════════════════════════════════════════════
 
 const ANALYTICS_CONFIG = {
   // Cloudflare Worker endpoint - LIVE AND ACTIVE!
-  endpoint: 'https://referral-analytics.contact-newleafllc.workers.dev',
+  endpoint: "https://referral-analytics.contact-newleafllc.workers.dev",
 
   // Analytics enabled - real-time notifications active!
   enabled: true,
 
   // Storage keys for localStorage
   storageKeys: {
-    referrerId: 'ref_id',
-    sessionId: 'session_id',
-    firstVisit: 'first_visit'
+    referrerId: "ref_id",
+    sessionId: "session_id",
+    firstVisit: "first_visit",
   },
 
   // Event types tracked
   events: {
-    QR_SCAN: 'qr_scan',
-    PARTNER_CLICK: 'partner_click',
-    PARTNER_VIEW_HUB: 'partner_page_view_from_hub',
-    PARTNER_VIEW_DIRECT: 'partner_page_view_direct',
-    CONTACT_SUBMIT: 'contact_submit',
-    EXTERNAL_SITE_CLICK: 'external_site_click'
-  }
+    QR_SCAN: "qr_scan",
+    PARTNER_CLICK: "partner_click",
+    PARTNER_VIEW_HUB: "partner_page_view_from_hub",
+    PARTNER_VIEW_DIRECT: "partner_page_view_direct",
+    CONTACT_SUBMIT: "contact_submit",
+    EXTERNAL_SITE_CLICK: "external_site_click",
+  },
 };
-
 
 // ═══════════════════════════════════════════════════════════════
 // UTILITY FUNCTIONS
@@ -68,7 +66,7 @@ function getURLParameter(name) {
  * In production, consider using crypto.randomUUID()
  */
 function generateSessionId() {
-  return 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+  return "sess_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9);
 }
 
 /**
@@ -92,7 +90,10 @@ function storeReferrerId(referrerId) {
 
     // Also store first visit timestamp if not exists
     if (!localStorage.getItem(ANALYTICS_CONFIG.storageKeys.firstVisit)) {
-      localStorage.setItem(ANALYTICS_CONFIG.storageKeys.firstVisit, new Date().toISOString());
+      localStorage.setItem(
+        ANALYTICS_CONFIG.storageKeys.firstVisit,
+        new Date().toISOString(),
+      );
     }
   }
 }
@@ -103,7 +104,6 @@ function storeReferrerId(referrerId) {
 function getReferrerId() {
   return localStorage.getItem(ANALYTICS_CONFIG.storageKeys.referrerId) || null;
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // ANALYTICS EVENT TRACKING
@@ -131,33 +131,32 @@ async function trackEvent(eventType, eventData = {}) {
     user_agent: navigator.userAgent,
     viewport: {
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight,
     },
-    ...eventData
+    ...eventData,
   };
 
   // LOG to console for development/debugging
-  console.log('[Analytics]', eventType, payload);
+  console.log("[Analytics]", eventType, payload);
 
   // Send to Cloudflare Worker if enabled
   if (ANALYTICS_CONFIG.enabled) {
     try {
       await fetch(ANALYTICS_CONFIG.endpoint, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
         // Don't wait for response to avoid blocking UI
-        keepalive: true
+        keepalive: true,
       });
     } catch (error) {
-      console.error('[Analytics] Failed to send event:', error);
+      console.error("[Analytics] Failed to send event:", error);
       // Silently fail - don't disrupt user experience
     }
   }
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // QR SCAN ATTRIBUTION
@@ -171,7 +170,7 @@ async function trackEvent(eventType, eventData = {}) {
  * Purpose: Track which QR codes/referrers are driving traffic
  */
 function initQRAttribution() {
-  const refParam = getURLParameter('ref');
+  const refParam = getURLParameter("ref");
 
   if (refParam) {
     // Store the referrer ID
@@ -180,11 +179,10 @@ function initQRAttribution() {
     // Track QR scan event
     trackEvent(ANALYTICS_CONFIG.events.QR_SCAN, {
       referrer_id: refParam,
-      landing_page: window.location.pathname
+      landing_page: window.location.pathname,
     });
   }
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // PARTNER CARD CLICK TRACKING (Hub Page)
@@ -199,28 +197,27 @@ function initQRAttribution() {
  */
 function initPartnerClickTracking() {
   // Find all partner cards
-  const partnerCards = document.querySelectorAll('.partner-card');
+  const partnerCards = document.querySelectorAll(".partner-card");
 
-  partnerCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      const partnerId = card.getAttribute('data-partner-id');
+  partnerCards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      const partnerId = card.getAttribute("data-partner-id");
       const referrerId = getReferrerId();
 
       // Update card's data attribute for context preservation
       if (referrerId) {
-        card.setAttribute('data-referrer-id', referrerId);
+        card.setAttribute("data-referrer-id", referrerId);
       }
 
       // Track click event
       trackEvent(ANALYTICS_CONFIG.events.PARTNER_CLICK, {
         partner_id: partnerId,
         referrer_id: referrerId,
-        destination: card.getAttribute('href')
+        destination: card.getAttribute("href"),
       });
     });
   });
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // PARTNER PAGE VIEW TRACKING (Partner Page)
@@ -238,23 +235,24 @@ function initPartnerClickTracking() {
  */
 function initPartnerPageTracking() {
   // Check if we're on a partner page
-  const partnerId = getURLParameter('id');
+  const partnerId = getURLParameter("id");
   if (!partnerId) return;
 
-  const source = getURLParameter('source');
+  const source = getURLParameter("source");
   const referrerId = getReferrerId();
 
   // Determine event type based on source
-  const eventType = source === 'hub'
-    ? ANALYTICS_CONFIG.events.PARTNER_VIEW_HUB
-    : ANALYTICS_CONFIG.events.PARTNER_VIEW_DIRECT;
+  const eventType =
+    source === "hub"
+      ? ANALYTICS_CONFIG.events.PARTNER_VIEW_HUB
+      : ANALYTICS_CONFIG.events.PARTNER_VIEW_DIRECT;
 
   // Track page view
   trackEvent(eventType, {
     partner_id: partnerId,
     referrer_id: referrerId,
-    source: source || 'direct',
-    has_context: !!referrerId
+    source: source || "direct",
+    has_context: !!referrerId,
   });
 
   // Update UI based on context
@@ -269,22 +267,23 @@ function initPartnerPageTracking() {
  */
 function updatePartnerPageContext(source, referrerId) {
   // Show hub context indicator if accessed from hub
-  const contextIndicator = document.getElementById('hub-context-indicator');
+  const contextIndicator = document.getElementById("hub-context-indicator");
   if (contextIndicator) {
-    if (source === 'hub' && referrerId) {
-      contextIndicator.style.display = 'block';
-      contextIndicator.textContent = 'From our curated referral network';
+    if (source === "hub" && referrerId) {
+      contextIndicator.style.display = "block";
+      contextIndicator.textContent = "From our curated referral network";
     } else {
-      contextIndicator.style.display = 'block';
-      contextIndicator.textContent = 'This profile is part of a trusted referral network';
+      contextIndicator.style.display = "block";
+      contextIndicator.textContent =
+        "This profile is part of a trusted referral network";
     }
   }
 
   // Update back link to preserve ref parameter
-  const backLink = document.getElementById('back-to-hub');
+  const backLink = document.getElementById("back-to-hub");
   if (backLink && referrerId) {
-    const currentHref = backLink.getAttribute('href');
-    backLink.setAttribute('href', currentHref + '?ref=' + referrerId);
+    const currentHref = backLink.getAttribute("href");
+    backLink.setAttribute("href", currentHref + "?ref=" + referrerId);
   }
 }
 
@@ -293,15 +292,14 @@ function updatePartnerPageContext(source, referrerId) {
  */
 function populateContactFormContext(partnerId, referrerId, source) {
   // Populate hidden fields for context preservation
-  const partnerIdField = document.getElementById('form-partner-id');
-  const referrerIdField = document.getElementById('form-referrer-id');
-  const sourceField = document.getElementById('form-source');
+  const partnerIdField = document.getElementById("form-partner-id");
+  const referrerIdField = document.getElementById("form-referrer-id");
+  const sourceField = document.getElementById("form-source");
 
-  if (partnerIdField) partnerIdField.value = partnerId || '';
-  if (referrerIdField) referrerIdField.value = referrerId || '';
-  if (sourceField) sourceField.value = source || 'direct';
+  if (partnerIdField) partnerIdField.value = partnerId || "";
+  if (referrerIdField) referrerIdField.value = referrerId || "";
+  if (sourceField) sourceField.value = source || "direct";
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // CONTACT FORM SUBMISSION TRACKING
@@ -315,23 +313,23 @@ function populateContactFormContext(partnerId, referrerId, source) {
  * Purpose: Track conversions and referral effectiveness
  */
 function initContactFormTracking() {
-  const contactForm = document.getElementById('contact-form');
+  const contactForm = document.getElementById("contact-form");
   if (!contactForm) return;
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener("submit", (e) => {
     // Note: This runs before form submission
     // In production, you might preventDefault() and submit via fetch
 
-    const partnerId = document.getElementById('form-partner-id')?.value;
-    const referrerId = document.getElementById('form-referrer-id')?.value;
-    const source = document.getElementById('form-source')?.value;
+    const partnerId = document.getElementById("form-partner-id")?.value;
+    const referrerId = document.getElementById("form-referrer-id")?.value;
+    const source = document.getElementById("form-source")?.value;
 
     // Track submission event
     trackEvent(ANALYTICS_CONFIG.events.CONTACT_SUBMIT, {
       partner_id: partnerId,
       referrer_id: referrerId,
-      source: source || 'direct',
-      has_context: !!referrerId
+      source: source || "direct",
+      has_context: !!referrerId,
     });
 
     /*
@@ -360,7 +358,6 @@ function initContactFormTracking() {
   });
 }
 
-
 // ═══════════════════════════════════════════════════════════════
 // EXTERNAL WEBSITE CLICK TRACKING
 // ═══════════════════════════════════════════════════════════════
@@ -373,23 +370,22 @@ function initContactFormTracking() {
  * Purpose: Track referral effectiveness and outbound traffic
  */
 function initExternalSiteTracking() {
-  const websiteButton = document.getElementById('visit-website-btn');
+  const websiteButton = document.getElementById("visit-website-btn");
   if (!websiteButton) return;
 
-  websiteButton.addEventListener('click', (e) => {
-    const partnerId = websiteButton.getAttribute('data-partner-id');
+  websiteButton.addEventListener("click", (e) => {
+    const partnerId = websiteButton.getAttribute("data-partner-id");
     const referrerId = getReferrerId();
-    const destinationUrl = websiteButton.getAttribute('href');
+    const destinationUrl = websiteButton.getAttribute("href");
 
     // Track outbound click
     trackEvent(ANALYTICS_CONFIG.events.EXTERNAL_SITE_CLICK, {
       partner_id: partnerId,
       referrer_id: referrerId,
-      destination_url: destinationUrl
+      destination_url: destinationUrl,
     });
   });
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // CONTEXT PRESERVATION FOR NAVIGATION
@@ -404,16 +400,18 @@ function preserveNavigationContext() {
   if (!referrerId) return;
 
   // Add ref and source parameters to all partner card links
-  const partnerCards = document.querySelectorAll('.partner-card');
-  partnerCards.forEach(card => {
-    const href = card.getAttribute('href');
-    if (href && !href.includes('ref=')) {
-      const separator = href.includes('?') ? '&' : '?';
-      card.setAttribute('href', href + separator + 'ref=' + referrerId + '&source=hub');
+  const partnerCards = document.querySelectorAll(".partner-card");
+  partnerCards.forEach((card) => {
+    const href = card.getAttribute("href");
+    if (href && !href.includes("ref=")) {
+      const separator = href.includes("?") ? "&" : "?";
+      card.setAttribute(
+        "href",
+        href + separator + "ref=" + referrerId + "&source=hub",
+      );
     }
   });
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // INITIALIZATION
@@ -423,7 +421,7 @@ function preserveNavigationContext() {
  * Initialize all analytics tracking on page load
  */
 function initAnalytics() {
-  console.log('[Analytics] Initializing...');
+  console.log("[Analytics] Initializing...");
 
   // Initialize QR attribution (hub page)
   initQRAttribution();
@@ -443,19 +441,18 @@ function initAnalytics() {
   // Preserve context in navigation links
   preserveNavigationContext();
 
-  console.log('[Analytics] Initialized', {
+  console.log("[Analytics] Initialized", {
     session_id: getSessionId(),
-    referrer_id: getReferrerId()
+    referrer_id: getReferrerId(),
   });
 }
 
 // Run on DOMContentLoaded
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAnalytics);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initAnalytics);
 } else {
   initAnalytics();
 }
-
 
 // ═══════════════════════════════════════════════════════════════
 // FUTURE: CLOUDFLARE WORKER IMPLEMENTATION

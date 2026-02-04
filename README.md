@@ -20,9 +20,11 @@ A privacy-respecting, trust-forward referral platform designed for Cloudflare Pa
 ## 🎯 Project Overview
 
 ### Website 1: Referral Hub (`index.html`)
+
 **Purpose:** Single landing page accessed via QR codes
 
 **Features:**
+
 - Displays 6-7 curated partner cards
 - Mobile-first design (QR-scan context)
 - Trust-forward presentation
@@ -30,14 +32,17 @@ A privacy-respecting, trust-forward referral platform designed for Cloudflare Pa
 - First-party analytics tracking
 
 **User Flow:**
+
 ```
 QR Scan → Hub Landing → Partner Selection → Partner Detail Page
 ```
 
 ### Website 2: Partner Pages (`partner.html`)
+
 **Purpose:** Individual partner profiles with brand expression
 
 **Features:**
+
 - Extended partner biography
 - Brand-aware styling (colors/fonts from partner's website)
 - Optional contact form
@@ -64,17 +69,20 @@ referral Website/
 ### Core Principles
 
 **Trust-Forward, Not Sales-Driven**
+
 - Calm, neutral aesthetic
 - No promotional language
 - Equal partner presentation
 - Human-centered design
 
 **Visual Synthesis**
+
 - Design reflects multiple brands without privileging any single one
 - Colors and typography are blended algorithmically
 - Feels unified, intentional, and cohesive
 
 **Privacy-Respecting**
+
 - First-party analytics only
 - No third-party trackers
 - Transparent data practices
@@ -113,6 +121,7 @@ A foundational design language that never gets fully overridden.
 ```
 
 **Purpose:**
+
 - Ensures readability and accessibility
 - Provides consistent spacing and hierarchy
 - Acts as a visual "container" for stylistic variation
@@ -124,6 +133,7 @@ A foundational design language that never gets fully overridden.
 When you provide partner websites and headshots, the system will extract:
 
 #### From Each Partner Website:
+
 - **Primary color:** Dominant brand color (from h1, buttons, links)
 - **Secondary color:** Accent color
 - **Font families:** Headline and body fonts
@@ -132,11 +142,13 @@ When you provide partner websites and headshots, the system will extract:
 - **Tone indicators:** Formal, friendly, bold, minimal
 
 #### From Headshots:
+
 - **Dominant color range:** Warm vs. cool bias
 - **Contrast level:** High vs. low contrast
 - **Saturation:** Vibrant vs. muted
 
 **Data Structure (Placeholder):**
+
 ```javascript
 // This is what you'll provide when ready
 const partnerStyleData = {
@@ -148,13 +160,13 @@ const partnerStyleData = {
       bodyFont: "Open Sans",
       borderRadius: "8px",
       density: "airy",
-      tone: "professional"
+      tone: "professional",
     },
     headshot: {
       dominantColor: "#8B7355",
       warmCool: "warm",
-      contrast: "medium"
-    }
+      contrast: "medium",
+    },
   },
   // ... more partners
 };
@@ -169,6 +181,7 @@ const partnerStyleData = {
 #### Synthesis Rules:
 
 **Color Blending:**
+
 ```javascript
 // Pseudocode for future implementation
 function synthesizeColors(partnerColors) {
@@ -189,15 +202,18 @@ function synthesizeColors(partnerColors) {
 ```
 
 **Typography Mapping:**
+
 - Select ONE primary font that harmonizes with most partners
 - Map partner fonts to secondary/accent usage
 - Never mix more than two font families on the hub
 
 **Spacing Normalization:**
+
 - Normalize border radius to median value across partners
 - Normalize spacing rhythm based on average density
 
 **Weighting Rules:**
+
 - No single partner contributes more than 20% to the final aesthetic
 - Hub style must feel "greater than the sum" of individual parts
 
@@ -206,23 +222,26 @@ function synthesizeColors(partnerColors) {
 ### Application Rules
 
 #### Referral Hub (`index.html`):
+
 - ✅ Uses synthesized composite style only
 - ❌ No per-partner overrides
 - ✅ Visual equality enforced
 
 #### Partner Pages (`partner.html`):
+
 - ✅ May selectively reintroduce that partner's extracted styles
 - ✅ Must retain base spacing and hierarchy
 - ✅ Colors and fonts may be overridden within defined bounds
 
 **Example per-partner override:**
+
 ```html
 <!-- Injected in <head> of partner.html -->
 <style>
   :root {
-    --color-accent-primary: #4A7C9E;     /* From partner site */
-    --color-accent-secondary: #9E7C4A;   /* From partner site */
-    --font-primary: 'Montserrat', sans-serif; /* From partner site */
+    --color-accent-primary: #4a7c9e; /* From partner site */
+    --color-accent-secondary: #9e7c4a; /* From partner site */
+    --font-primary: "Montserrat", sans-serif; /* From partner site */
   }
 </style>
 ```
@@ -232,24 +251,26 @@ function synthesizeColors(partnerColors) {
 ## 📊 Analytics System
 
 ### Overview
+
 First-party, privacy-respecting analytics powered by Cloudflare Workers.
 
 **File:** `analytics.js`
 
 ### Tracked Events
 
-| Event Type | Fires When | Purpose |
-|-----------|-----------|---------|
-| `qr_scan` | User visits hub with `?ref=` parameter | Track QR code effectiveness |
-| `partner_click` | User clicks partner card on hub | Understand partner interest |
-| `partner_page_view_from_hub` | Partner page loaded with `?source=hub` | Validate flow integrity |
-| `partner_page_view_direct` | Partner page loaded without hub context | Track direct access |
-| `contact_submit` | Contact form submitted | Track conversions |
-| `external_site_click` | User clicks "Visit Website" | Track outbound referrals |
+| Event Type                   | Fires When                              | Purpose                     |
+| ---------------------------- | --------------------------------------- | --------------------------- |
+| `qr_scan`                    | User visits hub with `?ref=` parameter  | Track QR code effectiveness |
+| `partner_click`              | User clicks partner card on hub         | Understand partner interest |
+| `partner_page_view_from_hub` | Partner page loaded with `?source=hub`  | Validate flow integrity     |
+| `partner_page_view_direct`   | Partner page loaded without hub context | Track direct access         |
+| `contact_submit`             | Contact form submitted                  | Track conversions           |
+| `external_site_click`        | User clicks "Visit Website"             | Track outbound referrals    |
 
 ### Context Preservation
 
 **URL Parameter Flow:**
+
 ```
 QR Scan → ?ref=qr-abc123
 Hub Visit → localStorage: { ref_id: 'qr-abc123' }
@@ -258,23 +279,27 @@ Partner Page → Preserves context in forms and back links
 ```
 
 ### Storage
+
 - **Client-side:** localStorage (referrer ID, session ID)
 - **Server-side:** Cloudflare D1 database (future implementation)
 
 ### Implementation Status
 
 **✅ Completed:**
+
 - Client-side tracking hooks
 - Context preservation logic
 - Event payload structure
 - localStorage management
 
 **⏳ Future Implementation:**
+
 - Cloudflare Worker endpoint (`/api/analytics`)
 - D1 database schema and storage
 - Analytics dashboard
 
 **Setup Instructions:**
+
 ```bash
 # 1. Create Cloudflare Worker
 wrangler generate analytics-worker
@@ -290,6 +315,7 @@ wrangler publish
 ```
 
 **Database Schema:**
+
 ```sql
 CREATE TABLE analytics_events (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -353,16 +379,19 @@ When you're ready to integrate real partner data, you have three options:
 **Best for:** Small number of partners (< 20)
 
 **Process:**
+
 1. Create one HTML file per partner: `partner-001.html`, `partner-002.html`
 2. Replace placeholder content with real data
 3. Customize styles inline per partner
 
 **Pros:**
+
 - No backend required
 - Fast performance
 - Easy to maintain
 
 **Cons:**
+
 - Manual updates required
 - No central data source
 
@@ -373,7 +402,9 @@ When you're ready to integrate real partner data, you have three options:
 **Best for:** Medium number of partners (20-50)
 
 **Process:**
+
 1. Create `partners.json` with all partner data:
+
 ```json
 {
   "partners": [
@@ -397,25 +428,30 @@ When you're ready to integrate real partner data, you have three options:
 ```
 
 2. Fetch and render with JavaScript:
+
 ```javascript
 // On hub page
-fetch('partners.json')
-  .then(res => res.json())
-  .then(data => renderPartnerCards(data.partners));
+fetch("partners.json")
+  .then((res) => res.json())
+  .then((data) => renderPartnerCards(data.partners));
 
 // On partner page
-const partnerId = new URLSearchParams(location.search).get('id');
-fetch('partners.json')
-  .then(res => res.json())
-  .then(data => renderPartnerPage(data.partners.find(p => p.id === partnerId)));
+const partnerId = new URLSearchParams(location.search).get("id");
+fetch("partners.json")
+  .then((res) => res.json())
+  .then((data) =>
+    renderPartnerPage(data.partners.find((p) => p.id === partnerId)),
+  );
 ```
 
 **Pros:**
+
 - Centralized data
 - Easy to update
 - Still static hosting
 
 **Cons:**
+
 - Requires JavaScript
 - SEO considerations
 - All data loaded upfront
@@ -427,37 +463,42 @@ fetch('partners.json')
 **Best for:** Large number of partners (50+)
 
 **Process:**
+
 1. Store partner data in Cloudflare KV:
+
 ```bash
 wrangler kv:namespace create PARTNERS
 wrangler kv:key put --binding=PARTNERS partner-001 ./partner-001.json
 ```
 
 2. Create Worker to serve dynamic pages:
+
 ```javascript
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const partnerId = url.searchParams.get('id');
+    const partnerId = url.searchParams.get("id");
 
     // Fetch partner data from KV
-    const partnerData = await env.PARTNERS.get(partnerId, 'json');
+    const partnerData = await env.PARTNERS.get(partnerId, "json");
 
     // Render template with data
     return new Response(renderTemplate(partnerData), {
-      headers: { 'Content-Type': 'text/html' }
+      headers: { "Content-Type": "text/html" },
     });
-  }
+  },
 };
 ```
 
 **Pros:**
+
 - Fully dynamic
 - Scalable to thousands of partners
 - Can integrate with CMS or API
 - Server-side rendering (good for SEO)
 
 **Cons:**
+
 - More complex setup
 - Requires Cloudflare Workers (paid plan for high traffic)
 
@@ -466,10 +507,12 @@ export default {
 ### Recommended Approach
 
 **Start with Option 1 (Static HTML)**
+
 - Get feedback on design and structure
 - Validate the concept with real partners
 
 **Scale to Option 3 (Workers + KV)**
+
 - When you have 10+ partners
 - When you need frequent updates
 - When you want CMS integration
@@ -481,6 +524,7 @@ export default {
 ### Cloudflare Pages Setup
 
 **1. Connect Repository:**
+
 ```bash
 # Push to GitHub
 git init
@@ -491,6 +535,7 @@ git push -u origin main
 ```
 
 **2. Create Cloudflare Pages Project:**
+
 - Go to Cloudflare Dashboard → Pages
 - Click "Create a project"
 - Connect to your GitHub repository
@@ -500,10 +545,12 @@ git push -u origin main
   - **Root directory:** `/`
 
 **3. Deploy:**
+
 - Click "Save and Deploy"
 - Your site will be live at: `https://your-project.pages.dev`
 
 **4. Custom Domain (Optional):**
+
 - Pages → Custom domains → Add domain
 - Add DNS records as instructed
 - Enable HTTPS
@@ -513,6 +560,7 @@ git push -u origin main
 ### Local Development
 
 **Option 1: Simple HTTP Server**
+
 ```bash
 # Using Python
 python3 -m http.server 8000
@@ -525,6 +573,7 @@ php -S localhost:8000
 ```
 
 **Option 2: Cloudflare Wrangler (Recommended)**
+
 ```bash
 # Install Wrangler
 npm install -g wrangler
@@ -538,30 +587,35 @@ wrangler pages dev .
 ## 🔮 Future Enhancements
 
 ### Phase 1: Core Functionality (Current)
+
 - ✅ Static HTML structure
 - ✅ CSS design system
 - ✅ Analytics hooks (client-side)
 - ✅ Mobile-first responsive design
 
 ### Phase 2: Analytics Implementation
+
 - ⏳ Cloudflare Worker for event tracking
 - ⏳ D1 database for event storage
 - ⏳ Simple analytics dashboard
 - ⏳ Partner performance reports
 
 ### Phase 3: Partner Brand Integration
+
 - ⏳ Website scraping for colors/fonts
 - ⏳ Algorithmic style synthesis
 - ⏳ Per-partner style generation
 - ⏳ Dynamic style injection
 
 ### Phase 4: Dynamic Content
+
 - ⏳ JSON data source or CMS integration
 - ⏳ Cloudflare Workers for server-side rendering
 - ⏳ KV storage for partner data
 - ⏳ Admin interface for partner management
 
 ### Phase 5: Advanced Features
+
 - ⏳ Partner testimonials (opt-in)
 - ⏳ Video introductions
 - ⏳ Calendar integration for bookings
@@ -637,6 +691,7 @@ All design tokens are defined in `styles.css` as CSS variables. Key categories:
 ### Browser Support
 
 This system is built with modern web standards and supports:
+
 - Chrome/Edge 90+
 - Firefox 88+
 - Safari 14+

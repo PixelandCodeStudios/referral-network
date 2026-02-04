@@ -1,16 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- DATA INJECTION: Partner-specific title -->
-  <title>Alexandra Chen — Trusted Partner Profile</title>
-  <meta name="description" content="Detailed profile and contact information.">
+    <!-- DATA INJECTION: Partner-specific title -->
+    <title>Alexandra Chen — Trusted Partner Profile</title>
+    <meta
+      name="description"
+      content="Detailed profile and contact information."
+    />
 
-  <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 
-  <!--
+    <!--
     PARTNER-SPECIFIC STYLE OVERRIDES
     ===================================
     This <style> block can be dynamically generated per partner
@@ -26,7 +29,7 @@
     </style>
   -->
 
-  <!--
+    <!--
     ANALYTICS & CONTEXT INITIALIZATION
     =====================================
     This script will:
@@ -35,12 +38,11 @@
     3. Fire partner_page_view event with context
     4. Handle missing context gracefully
   -->
-  <script src="analytics.js" defer></script>
-</head>
+    <script src="analytics.js" defer></script>
+  </head>
 
-<body class="partner-page">
-
-  <!--
+  <body class="partner-page">
+    <!--
     ═══════════════════════════════════════════════════════════════
     WEBSITE 2: PARTNER EXPANSION PAGE
     ═══════════════════════════════════════════════════════════════
@@ -69,12 +71,12 @@
     - Per-partner style overrides
   -->
 
-  <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
        CONTEXT HEADER — Hub-Origin Indicator
        ═══════════════════════════════════════════════════════════ -->
-  <div class="section section--header">
-    <div class="container">
-      <!--
+    <div class="section section--header">
+      <div class="container">
+        <!--
         FLOW CONFIRMATION: Back link to hub
         This element confirms the page is part of the referral network
         and provides clear navigation back to the hub.
@@ -82,14 +84,21 @@
         DATA INJECTION: href should include preserved ref parameter
         Example: href="index.html?ref=qr-abc123"
       -->
-      <a href="index.html" class="back-link" id="back-to-hub">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-        <span>Back to Trusted Partners</span>
-      </a>
+        <a href="index.html" class="back-link" id="back-to-hub">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          <span>Back to Trusted Partners</span>
+        </a>
 
-      <!--
+        <!--
         CONTEXT INDICATOR: Only shows if accessed from hub
         This subtle signal reinforces trust and flow integrity.
 
@@ -98,73 +107,83 @@
         - If ?source missing: hide or change copy to:
           "This profile is part of a trusted referral network"
       -->
-      <p class="footer-text mt-xs hidden" id="hub-context-indicator">
-        From our curated referral network
-      </p>
+        <p class="footer-text mt-xs hidden" id="hub-context-indicator">
+          From our curated referral network
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
        PARTNER HERO — Visual Identity
        ═══════════════════════════════════════════════════════════ -->
-  <section class="partner-hero">
-    <div class="container">
-      <!--
+    <section class="partner-hero">
+      <div class="container">
+        <!--
         DATA INJECTION: Partner avatar
         Replace with actual image or keep placeholder
         Style can be overridden per partner
       -->
-      <div class="partner-hero-avatar" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
+        <div class="partner-hero-avatar" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </div>
+
+        <!-- DATA INJECTION: Partner name -->
+        <h1 class="partner-hero-name" data-partner-id="partner-001">
+          Alexandra Chen
+        </h1>
+
+        <!-- DATA INJECTION: Partner role/service -->
+        <div class="partner-hero-role">Financial Planning</div>
       </div>
+    </section>
 
-      <!-- DATA INJECTION: Partner name -->
-      <h1 class="partner-hero-name" data-partner-id="partner-001">
-        Alexandra Chen
-      </h1>
-
-      <!-- DATA INJECTION: Partner role/service -->
-      <div class="partner-hero-role">Financial Planning</div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
        PARTNER CONTENT — Biography & Details
        ═══════════════════════════════════════════════════════════ -->
-  <section class="partner-content">
-    <div class="container container--narrow">
+    <section class="partner-content">
+      <div class="container container--narrow">
+        <!-- DATA INJECTION: Extended partner bio -->
+        <div class="partner-bio">
+          <p>
+            Alexandra Chen brings over 15 years of experience in comprehensive
+            financial planning, specializing in retirement strategies,
+            investment management, and wealth preservation for families and
+            professionals.
+          </p>
+          <p>
+            Her client-first philosophy emphasizes education, transparency, and
+            long-term relationships built on trust. Alexandra is a Certified
+            Financial Planner (CFP®) and holds an MBA in Finance from
+            Northwestern University.
+          </p>
+          <p>
+            Beyond numbers, she believes in understanding each client's unique
+            story, values, and goals—creating financial plans that align with
+            how they want to live, not just what they want to earn.
+          </p>
+        </div>
 
-      <!-- DATA INJECTION: Extended partner bio -->
-      <div class="partner-bio">
-        <p>
-          Alexandra Chen brings over 15 years of experience in comprehensive financial planning, specializing in retirement strategies, investment management, and wealth preservation for families and professionals.
-        </p>
-        <p>
-          Her client-first philosophy emphasizes education, transparency, and long-term relationships built on trust. Alexandra is a Certified Financial Planner (CFP®) and holds an MBA in Finance from Northwestern University.
-        </p>
-        <p>
-          Beyond numbers, she believes in understanding each client's unique story, values, and goals—creating financial plans that align with how they want to live, not just what they want to earn.
-        </p>
-      </div>
-
-      <!--
+        <!--
         VISUAL BRAND AREA
         ====================
         DATA INJECTION: Replace with partner's brand image or color field
         This area can be dynamically styled based on scraped brand colors
       -->
-      <div class="partner-visual">
-        [Partner Brand Visual or Image]
-      </div>
+        <div class="partner-visual">[Partner Brand Visual or Image]</div>
 
-      <!-- ═══════════════════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════════════════
            ACTION BUTTONS — External Links
            ═══════════════════════════════════════════════════════ -->
-      <div class="partner-actions">
-        <!--
+        <div class="partner-actions">
+          <!--
           ANALYTICS HOOK: external_site_click
           DATA INJECTION: Partner's actual website URL
 
@@ -174,45 +193,54 @@
           - referrer_id (from original QR scan)
           - destination_url
         -->
-        <a
-          href="https://example.com"
-          class="btn btn--primary"
-          id="visit-website-btn"
-          data-partner-id="partner-001"
-          data-referrer-id=""
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit Website
-          <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </a>
+          <a
+            href="https://example.com"
+            class="btn btn--primary"
+            id="visit-website-btn"
+            data-partner-id="partner-001"
+            data-referrer-id=""
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit Website
+            <svg
+              class="btn-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
 
-        <!-- Optional: Email or phone button -->
-        <a
-          href="mailto:alexandra@example.com"
-          class="btn btn--secondary"
-          data-partner-id="partner-001"
-        >
-          Send Email
-        </a>
+          <!-- Optional: Email or phone button -->
+          <a
+            href="mailto:alexandra@example.com"
+            class="btn btn--secondary"
+            data-partner-id="partner-001"
+          >
+            Send Email
+          </a>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
        CONTACT FORM — Optional Section
        ═══════════════════════════════════════════════════════════ -->
-  <section class="contact-section">
-    <div class="container">
-      <div class="contact-form">
-        <h2 class="mb-lg">Get in Touch</h2>
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-form">
+          <h2 class="mb-lg">Get in Touch</h2>
 
-        <!--
+          <!--
           FORM SUBMISSION ANALYTICS
           ===========================
           ANALYTICS HOOK: contact_submit
@@ -227,9 +255,8 @@
           Example: POST /api/contact
           Body: { name, email, message, partner_id, referrer_id }
         -->
-        <form id="contact-form" action="#" method="POST">
-
-          <!--
+          <form id="contact-form" action="#" method="POST">
+            <!--
             HIDDEN FIELDS: Context Preservation
             ======================================
             These fields ensure referral attribution is maintained
@@ -239,75 +266,89 @@
             These values should be populated by analytics.js on page load
             by reading URL parameters and localStorage.
           -->
-          <input type="hidden" name="partner_id" id="form-partner-id" value="partner-001">
-          <input type="hidden" name="referrer_id" id="form-referrer-id" value="">
-          <input type="hidden" name="source" id="form-source" value="">
-
-          <!-- User input fields -->
-          <div class="form-group">
-            <label for="contact-name" class="form-label">Your Name</label>
             <input
-              type="text"
-              id="contact-name"
-              name="name"
-              class="form-input"
-              required
-              placeholder="Enter your name"
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="contact-email" class="form-label">Email Address</label>
+              type="hidden"
+              name="partner_id"
+              id="form-partner-id"
+              value="partner-001"
+            />
             <input
-              type="email"
-              id="contact-email"
-              name="email"
-              class="form-input"
-              required
-              placeholder="your.email@example.com"
-            >
-          </div>
+              type="hidden"
+              name="referrer_id"
+              id="form-referrer-id"
+              value=""
+            />
+            <input type="hidden" name="source" id="form-source" value="" />
 
-          <div class="form-group">
-            <label for="contact-message" class="form-label">Message</label>
-            <textarea
-              id="contact-message"
-              name="message"
-              class="form-textarea"
-              required
-              placeholder="Tell Alexandra how you'd like to connect..."
-            ></textarea>
-          </div>
+            <!-- User input fields -->
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Your Name</label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                class="form-input"
+                required
+                placeholder="Enter your name"
+              />
+            </div>
 
-          <button type="submit" class="btn btn--primary form-submit">
-            Send Message
-          </button>
-        </form>
+            <div class="form-group">
+              <label for="contact-email" class="form-label"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                class="form-input"
+                required
+                placeholder="your.email@example.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                class="form-textarea"
+                required
+                placeholder="Tell Alexandra how you'd like to connect..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary form-submit">
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
        FOOTER — Minimal, Consistent with Hub
        ═══════════════════════════════════════════════════════════ -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p class="footer-text">
-          This profile is part of a trusted referral network. All recommendations are based on personal experience and professional relationships.
-        </p>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <p class="footer-text">
+            This profile is part of a trusted referral network. All
+            recommendations are based on personal experience and professional
+            relationships.
+          </p>
 
-        <nav class="footer-links" aria-label="Footer navigation">
-          <!-- Link back to hub -->
-          <a href="index.html" class="footer-link">View All Partners</a>
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Contact</a>
-        </nav>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <!-- Link back to hub -->
+            <a href="index.html" class="footer-link">View All Partners</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Contact</a>
+          </nav>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!--
+    <!--
     ═══════════════════════════════════════════════════════════════
     IMPLEMENTATION NOTES FOR PARTNER PAGES
     ═══════════════════════════════════════════════════════════════
@@ -360,7 +401,5 @@
     - Support video introductions
     - Add calendar integration for bookings
     - Multi-language support
-  -->
-
-</body>
+  --></body>
 </html>

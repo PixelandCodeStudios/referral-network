@@ -10,6 +10,7 @@ This guide walks you through deploying your referral network with **real-time em
    - Sign up at: https://dash.cloudflare.com/sign-up
 
 2. **Wrangler CLI** (Cloudflare's development tool)
+
    ```bash
    npm install -g wrangler
    ```
@@ -31,6 +32,7 @@ wrangler d1 create referral-analytics-db
 ```
 
 **Output will look like:**
+
 ```
 ✅ Successfully created DB 'referral-analytics-db'
 
@@ -41,6 +43,7 @@ database_id = "abc123def456-your-database-id"
 ```
 
 **Copy the `database_id`** and update it in `wrangler.toml`:
+
 ```toml
 [[workers.d1_databases]]
 binding = "DB"
@@ -56,6 +59,7 @@ wrangler d1 execute referral-analytics-db --file=workers/schema.sql
 ```
 
 **Expected output:**
+
 ```
 🌀 Executing on referral-analytics-db:
 🌀 To execute on your remote database, add a --remote flag to your wrangler command.
@@ -67,22 +71,24 @@ wrangler d1 execute referral-analytics-db --file=workers/schema.sql
 **Edit both worker files** and update the `PARTNER_EMAILS` object with real email addresses:
 
 **File: `workers/analytics/index.js`**
+
 ```javascript
 const PARTNER_EMAILS = {
-  'brian-dow': 'sales@myhst.com',
-  'joshua-naylor': 'josh@thenaylorgroup.com',
-  'tiffany-mcalister': 'tiffany@dreamlivingflorida.com',
-  'tom-berry': 'tom@longviewwealthadvisors.com', // Update this!
+  "brian-dow": "sales@myhst.com",
+  "joshua-naylor": "josh@thenaylorgroup.com",
+  "tiffany-mcalister": "tiffany@dreamlivingflorida.com",
+  "tom-berry": "tom@longviewwealthadvisors.com", // Update this!
 };
 ```
 
 **File: `workers/weekly-report/index.js`**
+
 ```javascript
 const PARTNER_EMAILS = {
-  'brian-dow': 'sales@myhst.com',
-  'joshua-naylor': 'josh@thenaylorgroup.com',
-  'tiffany-mcalister': 'tiffany@dreamlivingflorida.com',
-  'tom-berry': 'tom@longviewwealthadvisors.com', // Update this!
+  "brian-dow": "sales@myhst.com",
+  "joshua-naylor": "josh@thenaylorgroup.com",
+  "tiffany-mcalister": "tiffany@dreamlivingflorida.com",
+  "tom-berry": "tom@longviewwealthadvisors.com", // Update this!
 };
 ```
 
@@ -94,6 +100,7 @@ wrangler deploy workers/analytics/index.js
 ```
 
 **Output:**
+
 ```
 ⛅️ wrangler 3.x.x
 ------------------
@@ -110,6 +117,7 @@ wrangler deploy workers/weekly-report/index.js
 ```
 
 **Output:**
+
 ```
 ✨ Successfully deployed to https://referral-weekly-report.YOUR_SUBDOMAIN.workers.dev
 📅 Cron triggers scheduled: 0 11 * * 2 (Tuesdays at 11:00 UTC)
@@ -122,7 +130,7 @@ wrangler deploy workers/weekly-report/index.js
 ```javascript
 const ANALYTICS_CONFIG = {
   // Replace YOUR_SUBDOMAIN with your actual Cloudflare subdomain
-  endpoint: 'https://referral-analytics.YOUR_SUBDOMAIN.workers.dev',
+  endpoint: "https://referral-analytics.YOUR_SUBDOMAIN.workers.dev",
 
   // Enable analytics after deployment
   enabled: true, // Change from false to true
@@ -136,6 +144,7 @@ const ANALYTICS_CONFIG = {
 #### Option A: Deploy via GitHub
 
 1. **Push your code to GitHub:**
+
    ```bash
    git init
    git add .
@@ -177,6 +186,7 @@ wrangler pages deploy . --project-name=referral-network
 The workers use **MailChannels** (free for Cloudflare Workers). No additional setup needed!
 
 If you want to use a custom "From" email address:
+
 1. Add your domain to Cloudflare
 2. Update the `from.email` in both worker files:
    ```javascript
@@ -191,23 +201,25 @@ If you want to use a custom "From" email address:
 If you prefer SendGrid/Mailgun, replace the email sending code in both workers:
 
 **SendGrid Example:**
+
 ```javascript
-await fetch('https://api.sendgrid.com/v3/mail/send', {
-  method: 'POST',
+await fetch("https://api.sendgrid.com/v3/mail/send", {
+  method: "POST",
   headers: {
-    'Authorization': `Bearer ${env.SENDGRID_API_KEY}`,
-    'Content-Type': 'application/json'
+    Authorization: `Bearer ${env.SENDGRID_API_KEY}`,
+    "Content-Type": "application/json",
   },
   body: JSON.stringify({
     personalizations: [{ to: [{ email: partnerEmail }] }],
-    from: { email: 'notifications@yourdomain.com' },
+    from: { email: "notifications@yourdomain.com" },
     subject: subject,
-    content: [{ type: 'text/plain', value: emailBody }]
-  })
+    content: [{ type: "text/plain", value: emailBody }],
+  }),
 });
 ```
 
 Then add your API key:
+
 ```bash
 wrangler secret put SENDGRID_API_KEY --name referral-analytics
 ```
@@ -249,12 +261,14 @@ wrangler d1 execute referral-analytics-db --command="SELECT * FROM analytics_eve
 Reports are automatically sent **every Tuesday at 6:00 AM EST** (11:00 UTC).
 
 To change the schedule, edit `wrangler.toml`:
+
 ```toml
 [workers.triggers]
 crons = ["0 11 * * 2"]  # Cron format: minute hour day month weekday
 ```
 
 **Common schedules:**
+
 - Every Monday at 9am EST: `"0 14 * * 1"`
 - Every day at 6am EST: `"0 11 * * *"`
 - First day of month at 8am EST: `"0 13 1 * *"`
@@ -333,6 +347,7 @@ wrangler d1 execute referral-analytics-db --command="
 ## 💰 Cost Estimate
 
 **Cloudflare Free Tier includes:**
+
 - ✅ 100,000 Worker requests/day (plenty for analytics)
 - ✅ 5 GB D1 database storage
 - ✅ 100,000 emails/day via MailChannels
@@ -341,6 +356,7 @@ wrangler d1 execute referral-analytics-db --command="
 **Expected monthly cost:** **$0** for most referral networks!
 
 Only upgrade to paid if you exceed:
+
 - 1+ million events/month
 - 100+ partners with high traffic
 
@@ -353,6 +369,7 @@ Only upgrade to paid if you exceed:
 **Problem:** Partners not receiving notifications
 
 **Solution:**
+
 1. Check worker logs: `wrangler tail referral-analytics`
 2. Verify email addresses in `PARTNER_EMAILS`
 3. Check spam folders
@@ -363,6 +380,7 @@ Only upgrade to paid if you exceed:
 **Problem:** No data in D1 database
 
 **Solution:**
+
 1. Verify `analytics.js` has `enabled: true`
 2. Check browser console for errors
 3. Verify Worker endpoint URL is correct
@@ -373,6 +391,7 @@ Only upgrade to paid if you exceed:
 **Problem:** No reports on Tuesday morning
 
 **Solution:**
+
 1. Check cron trigger: `wrangler deployments list referral-weekly-report`
 2. View logs: `wrangler tail referral-weekly-report`
 3. Trigger manually to test (see Testing section above)
@@ -382,6 +401,7 @@ Only upgrade to paid if you exceed:
 ## 📝 Next Steps
 
 After deployment:
+
 1. ✅ Test with a QR code: Add `?ref=qr-test-001` to your URL
 2. ✅ Click on each partner card to trigger notifications
 3. ✅ Wait for Tuesday at 6am for first weekly report
@@ -392,6 +412,7 @@ After deployment:
 ## 🎉 You're Done!
 
 Your referral network now has:
+
 - ✅ Real-time email notifications when cards are clicked
 - ✅ Weekly analytics reports every Tuesday at 6am
 - ✅ Full QR code tracking

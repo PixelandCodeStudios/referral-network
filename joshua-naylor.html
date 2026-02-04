@@ -1,257 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Joshua Naylor — The Naylor Group</title>
-  <meta name="description" content="Premier mortgage lending services with Joshua Naylor of The Naylor Group in Tampa Bay.">
+    <title>Joshua Naylor — The Naylor Group</title>
+    <meta
+      name="description"
+      content="Premier mortgage lending services with Joshua Naylor of The Naylor Group in Tampa Bay."
+    />
 
-  <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="analytics.js" defer></script>
+  </head>
 
-  <!-- Partner-specific design system from thenaylorgroup.com -->
-  <style>
-    :root {
-      /* Naylor Group Brand Colors */
-      --color-accent-primary: #d13030;     /* Naylor primary red */
-      --color-accent-secondary: #CA2C1D;   /* Naylor secondary red */
-      --color-accent-hover: #a82525;       /* Darker red for hover */
-      --color-text-primary: #212121;       /* Naylor dark text */
-      --color-bg-light: #f6f8fa;           /* Naylor light background */
+  <body class="partner-page partner-joshua-naylor">
+    <!-- Site Header -->
+    <header class="site-header site-header--compact">
+      <div class="container">
+        <a href="index.html" class="header-brand-link">
+          <div class="site-emblem site-emblem--small">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <span class="site-title site-title--small">Midlife Mafia</span>
+        </a>
+      </div>
+    </header>
 
-      /* Naylor Typography */
-      --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      --font-size-heading: 21px;
-    }
-
-    /* Naylor Button Style - Bold, action-oriented */
-    .btn--primary {
-      background-color: var(--color-accent-primary);
-      border-radius: 4px;                  /* Subtle rounding */
-      padding: 0.875rem 2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      box-shadow: 0 2px 4px rgba(209, 48, 48, 0.2);
-      transition: all 0.25s ease;
-      text-transform: uppercase;           /* Strong, action-oriented */
-    }
-
-    .btn--primary:hover {
-      background-color: var(--color-accent-hover);
-      box-shadow: 0 4px 8px rgba(209, 48, 48, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .btn--secondary {
-      border-radius: 4px;
-      border: 2px solid var(--color-accent-primary);
-      padding: 0.875rem 2rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .btn--secondary:hover {
-      background-color: var(--color-accent-primary);
-      border-color: var(--color-accent-primary);
-      color: white;
-    }
-
-    /* Naylor Hero Section - Red gradient */
-    .partner-hero {
-      background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
-    }
-
-    .partner-hero-name,
-    .partner-hero-role {
-      color: white;
-    }
-
-    /* Naylor professional headings */
-    .partner-content h2 {
-      color: var(--color-accent-primary);
-      font-size: var(--font-size-heading);
-      font-weight: 600;
-    }
-
-    /* Naylor text styling */
-    .partner-bio {
-      color: var(--color-text-primary);
-    }
-  </style>
-
-  <script src="analytics.js" defer></script>
-</head>
-
-<body class="partner-page">
-
-  <!-- Site Header -->
-  <header class="site-header site-header--compact">
-    <div class="container">
-      <a href="index.html" class="header-brand-link">
-        <div class="site-emblem site-emblem--small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5"/>
-            <path d="M2 12l10 5 10-5"/>
-          </svg>
+    <!-- Partner Hero -->
+    <section class="partner-hero">
+      <div class="container">
+        <div class="partner-hero-avatar" aria-hidden="true">
+          <img src="images/joshua-naylor.jpg" alt="Joshua Naylor" />
         </div>
-        <span class="site-title site-title--small">Midlife Mafia</span>
-      </a>
-    </div>
-  </header>
 
-  <!-- Partner Hero -->
-  <section class="partner-hero">
-    <div class="container">
-      <div class="partner-hero-avatar" aria-hidden="true">
-        <img src="images/joshua-naylor.jpg" alt="Joshua Naylor">
+        <h1 class="partner-hero-name" data-partner-id="joshua-naylor">
+          Joshua Naylor
+        </h1>
+
+        <div class="partner-hero-role">Mortgage Lending</div>
       </div>
+    </section>
 
-      <h1 class="partner-hero-name" data-partner-id="joshua-naylor">
-        Joshua Naylor
-      </h1>
+    <!-- Partner Content -->
+    <section class="partner-content">
+      <div class="container container--narrow">
+        <div class="partner-bio">
+          <p>
+            Joshua Naylor leads The Naylor Group, a premier mortgage lending
+            firm serving the Tampa Bay Metro area in Florida. With a commitment
+            to competitive rates and individual attention, Joshua helps clients
+            navigate home purchases, refinancing options, and comprehensive loan
+            programs.
+          </p>
+          <p>
+            The Naylor Group offers a wide array of mortgage products including
+            Conventional, FHA, VA, and Jumbo loans, backed by investment tools
+            and quality service that puts customer needs first. Their approach
+            combines technology with personal touch—offering online secure
+            applications, pre-qualification tools, and interactive mortgage
+            calculators.
+          </p>
+          <p>
+            Whether you're a first-time homebuyer, looking to refinance, or
+            seeking specialized loan programs, Joshua provides expert guidance
+            and scenario planning to help you make informed decisions about one
+            of life's biggest investments.
+          </p>
+        </div>
 
-      <div class="partner-hero-role">Mortgage Lending</div>
-    </div>
-  </section>
-
-  <!-- Partner Content -->
-  <section class="partner-content">
-    <div class="container container--narrow">
-
-      <div class="partner-bio">
-        <p>
-          Joshua Naylor leads The Naylor Group, a premier mortgage lending firm serving the Tampa Bay Metro area in Florida. With a commitment to competitive rates and individual attention, Joshua helps clients navigate home purchases, refinancing options, and comprehensive loan programs.
-        </p>
-        <p>
-          The Naylor Group offers a wide array of mortgage products including Conventional, FHA, VA, and Jumbo loans, backed by investment tools and quality service that puts customer needs first. Their approach combines technology with personal touch—offering online secure applications, pre-qualification tools, and interactive mortgage calculators.
-        </p>
-        <p>
-          Whether you're a first-time homebuyer, looking to refinance, or seeking specialized loan programs, Joshua provides expert guidance and scenario planning to help you make informed decisions about one of life's biggest investments.
-        </p>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="partner-actions">
-        <a
-          href="https://thenaylorgroup.com"
-          class="btn btn--primary"
-          id="visit-website-btn"
-          data-partner-id="joshua-naylor"
-          data-referrer-id=""
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit Website
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 0.5rem;">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </a>
-
-        <a
-          href="mailto:josh@thenaylorgroup.com"
-          class="btn btn--secondary"
-          data-partner-id="joshua-naylor"
-        >
-          Send Email
-        </a>
-
-        <a
-          href="tel:+17274826093"
-          class="btn btn--secondary"
-          data-partner-id="joshua-naylor"
-        >
-          Call (727) 482-6093
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contact Form -->
-  <section class="contact-section">
-    <div class="container">
-      <div class="contact-form">
-        <h2 class="mb-lg">Get in Touch with Joshua</h2>
-
-        <form id="contact-form" action="#" method="POST">
-          <input type="hidden" name="partner_id" id="form-partner-id" value="joshua-naylor">
-          <input type="hidden" name="referrer_id" id="form-referrer-id" value="">
-          <input type="hidden" name="source" id="form-source" value="">
-
-          <div class="form-group">
-            <label for="contact-name" class="form-label">Your Name</label>
-            <input
-              type="text"
-              id="contact-name"
-              name="name"
-              class="form-input"
-              required
-              placeholder="Enter your name"
+        <!-- Action Buttons -->
+        <div class="partner-actions">
+          <a
+            href="https://thenaylorgroup.com"
+            class="btn btn--primary"
+            id="visit-website-btn"
+            data-partner-id="joshua-naylor"
+            data-referrer-id=""
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit Website
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              style="margin-left: 0.5rem"
             >
-          </div>
+              <path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
 
-          <div class="form-group">
-            <label for="contact-email" class="form-label">Email Address</label>
-            <input
-              type="email"
-              id="contact-email"
-              name="email"
-              class="form-input"
-              required
-              placeholder="your.email@example.com"
-            >
-          </div>
+          <a
+            href="mailto:josh@thenaylorgroup.com"
+            class="btn btn--secondary"
+            data-partner-id="joshua-naylor"
+          >
+            Send Email
+          </a>
 
-          <div class="form-group">
-            <label for="contact-phone" class="form-label">Phone Number (Optional)</label>
-            <input
-              type="tel"
-              id="contact-phone"
-              name="phone"
-              class="form-input"
-              placeholder="(555) 123-4567"
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="contact-message" class="form-label">Message</label>
-            <textarea
-              id="contact-message"
-              name="message"
-              class="form-textarea"
-              required
-              placeholder="Tell Joshua about your mortgage needs..."
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn btn--primary form-submit">
-            Send Message
-          </button>
-        </form>
+          <a
+            href="tel:+17274826093"
+            class="btn btn--secondary"
+            data-partner-id="joshua-naylor"
+          >
+            Call (727) 482-6093
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p class="footer-text">
-          This profile is part of a trusted referral network. All recommendations are based on personal experience and professional relationships.
-        </p>
+    <!-- Contact Form -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-form">
+          <h2 class="mb-lg">Get in Touch with Joshua</h2>
 
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="index.html" class="footer-link">View All Partners</a>
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Contact</a>
-        </nav>
+          <form id="contact-form" action="#" method="POST">
+            <input
+              type="hidden"
+              name="partner_id"
+              id="form-partner-id"
+              value="joshua-naylor"
+            />
+            <input
+              type="hidden"
+              name="referrer_id"
+              id="form-referrer-id"
+              value=""
+            />
+            <input type="hidden" name="source" id="form-source" value="" />
+
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Your Name</label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                class="form-input"
+                required
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                class="form-input"
+                required
+                placeholder="your.email@example.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-phone" class="form-label"
+                >Phone Number (Optional)</label
+              >
+              <input
+                type="tel"
+                id="contact-phone"
+                name="phone"
+                class="form-input"
+                placeholder="(555) 123-4567"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                class="form-textarea"
+                required
+                placeholder="Tell Joshua about your mortgage needs..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary form-submit">
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  </footer>
+    </section>
 
-</body>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <p class="footer-text">
+            This profile is part of a trusted referral network. All
+            recommendations are based on personal experience and professional
+            relationships.
+          </p>
+
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html" class="footer-link">View All Partners</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
