@@ -371,8 +371,8 @@ a:hover {
 
 /* Compact Header for Partner Pages */
 .site-header--compact {
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-xl);
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
   text-align: left;
 }
 
