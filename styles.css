@@ -369,6 +369,56 @@ a:hover {
   color: var(--color-gold);
 }
 
+/* Compact Header for Partner Pages */
+.site-header--compact {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  text-align: left;
+}
+
+.site-header--compact::before,
+.site-header--compact::after {
+  display: none;
+}
+
+.header-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.header-brand-link:hover {
+  opacity: 0.8;
+}
+
+.site-emblem--small {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: var(--radius-full);
+  background: rgba(201, 162, 39, 0.1);
+  border: 1px solid var(--color-border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-emblem--small svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-gold);
+}
+
+.site-title--small {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gold);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
 @media (max-width: 768px) {
   .site-header {
     padding-top: var(--space-3xl);
