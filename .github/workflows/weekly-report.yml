@@ -1,0 +1,15 @@
+name: Trigger Weekly Report
+
+on:
+  schedule:
+    - cron: '0 11 * * 2'
+  workflow_dispatch:
+
+jobs:
+  trigger-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Weekly Report Worker
+        run: |
+          curl -X POST https://referral-weekly-report.contact-newleafllc.workers.dev \
+            -H "Content-Type: application/json"
