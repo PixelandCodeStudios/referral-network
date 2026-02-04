@@ -9,6 +9,9 @@
  * Deploy: wrangler deploy workers/analytics/index.js
  */
 
+import { EmailMessage } from "cloudflare:email";
+import { createMimeMessage } from "mimetext";
+
 // Admin email - receives copy of all partner notifications
 const ADMIN_EMAIL = "pixelandcodestudios@gmail.com";
 
@@ -207,41 +210,31 @@ Referral Network Analytics
   // Option 2: Use SendGrid, Mailgun, or other email service
 
   try {
-    // Using a simple email service (you'll need to configure this)
-    // For now, we'll use a generic fetch to an email API
-    // You can replace this with SendGrid, Mailgun, etc.
-
-    // TEMPORARY: Only sending to admin until email service is configured
-    // MailChannels free tier ended June 2024 - need to set up Resend, SendGrid, or other service
-    await fetch("https://api.mailchannels.net/tx/v1/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        personalizations: [
-          {
-            to: [{ email: ADMIN_EMAIL, name: "Pixel & Code Studios" }],
-          },
-        ],
-        from: {
-          email: "notifications@referralnetwork.com",
-          name: "Referral Network Notifications",
-        },
-        subject: subject,
-        content: [
-          {
-            type: "text/plain",
-            value: emailBody,
-          },
-        ],
-      }),
+    // Create MIME message using mimetext
+    const msg = createMimeMessage();
+    msg.setSender({
+      name: env.FROM_NAME || "Referral Network Notifications",
+      addr: env.FROM_EMAIL || "notifications@referralnetwork.com"
+    });
+    msg.setRecipient(ADMIN_EMAIL);
+    msg.setSubject(subject);
+    msg.addMessage({
+      contentType: "text/plain",
+      data: emailBody,
     });
 
+    // Create EmailMessage and send via Cloudflare Email Workers
+    const message = new EmailMessage(
+      env.FROM_EMAIL || "notifications@referralnetwork.com",
+      ADMIN_EMAIL,
+      msg.asRaw()
+    );
+
+    await env.EMAIL.send(message);
     console.log(
       `Email sent to ${ADMIN_EMAIL} for ${partnerName} event: ${event.event}`,
     );
   } catch (error) {
-    console.error(`Failed to send email to ${partnerEmail}:`, error);
+    console.error(`Failed to send email:`, error);
   }
 }
