@@ -178,18 +178,19 @@ async function sendPartnerNotification(env, event) {
 
   // Create email body
   const emailBody = `
-Hi ${partnerName},
+Partner Activity Alert: ${partnerName}
 
 ${eventDescription}!
 
 Event Details:
+• Partner: ${partnerName}
 • Action: ${event.event}
 • Time: ${new Date(event.timestamp).toLocaleString('en-US', { timeZone: 'America/New_York' })}
 • Referral Source: ${referralSource}
 • Location: ${location}
 • Page: ${event.pathname || event.url}
 
-This notification is sent in real-time when someone interacts with your referral card.
+This notification is sent in real-time when someone interacts with a partner card.
 
 ---
 Referral Network Analytics
@@ -204,6 +205,8 @@ Referral Network Analytics
     // For now, we'll use a generic fetch to an email API
     // You can replace this with SendGrid, Mailgun, etc.
 
+    // TEMPORARY: Only sending to admin until email service is configured
+    // MailChannels free tier ended June 2024 - need to set up Resend, SendGrid, or other service
     await fetch('https://api.mailchannels.net/tx/v1/send', {
       method: 'POST',
       headers: {
@@ -212,7 +215,6 @@ Referral Network Analytics
       body: JSON.stringify({
         personalizations: [{
           to: [
-            { email: partnerEmail, name: partnerName },
             { email: ADMIN_EMAIL, name: 'Pixel & Code Studios' }
           ],
         }],
@@ -228,7 +230,7 @@ Referral Network Analytics
       })
     });
 
-    console.log(`Email sent to ${partnerEmail} and ${ADMIN_EMAIL} for event ${event.event}`);
+    console.log(`Email sent to ${ADMIN_EMAIL} for ${partnerName} event: ${event.event}`);
   } catch (error) {
     console.error(`Failed to send email to ${partnerEmail}:`, error);
   }
