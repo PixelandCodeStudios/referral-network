@@ -831,15 +831,27 @@ a:hover {
 .partner-hero-avatar {
   width: 240px;
   height: 240px;
-  border-radius: 50%;
+  border-radius: var(--radius-xl);
   background: var(--color-bg-elevated);
-  border: 4px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.15);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--space-xl);
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), var(--shadow-glow);
+  position: relative;
+}
+
+/* Decorative frame */
+.partner-hero-avatar::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: calc(var(--radius-xl) - 6px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .partner-hero-avatar img {
@@ -847,7 +859,7 @@ a:hover {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  border-radius: 50%;
+  border-radius: calc(var(--radius-xl) - 3px);
 }
 
 .partner-hero-name {
