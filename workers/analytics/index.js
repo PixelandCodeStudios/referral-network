@@ -9,12 +9,15 @@
  * Deploy: wrangler deploy workers/analytics/index.js
  */
 
+// Admin email - receives copy of all partner notifications
+const ADMIN_EMAIL = 'pixelandcodestudios@gmail.com';
+
 // Partner email configuration
 const PARTNER_EMAILS = {
   'brian-dow': 'sales@myhst.com',
   'joshua-naylor': 'josh@thenaylorgroup.com',
   'tiffany-mcalister': 'tiffany@dreamlivingflorida.com',
-  'tom-berry': 'info@longviewwealthadvisors.com', // Update with actual email
+  'tom-berry': 'info@longviewwealthadvisors.com',
 };
 
 const PARTNER_NAMES = {
@@ -208,10 +211,13 @@ Referral Network Analytics
       },
       body: JSON.stringify({
         personalizations: [{
-          to: [{ email: partnerEmail, name: partnerName }],
+          to: [
+            { email: partnerEmail, name: partnerName },
+            { email: ADMIN_EMAIL, name: 'Pixel & Code Studios' }
+          ],
         }],
         from: {
-          email: 'notifications@referralnetwork.com', // Update with your domain
+          email: 'notifications@referralnetwork.com',
           name: 'Referral Network Notifications'
         },
         subject: subject,
@@ -222,7 +228,7 @@ Referral Network Analytics
       })
     });
 
-    console.log(`Email sent to ${partnerEmail} for event ${event.event}`);
+    console.log(`Email sent to ${partnerEmail} and ${ADMIN_EMAIL} for event ${event.event}`);
   } catch (error) {
     console.error(`Failed to send email to ${partnerEmail}:`, error);
   }
