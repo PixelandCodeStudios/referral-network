@@ -1581,3 +1581,63 @@ textarea:focus-visible {
   color: var(--color-accent-primary);
   font-weight: 700;
 }
+
+/* ───────────────────────────────────────────────────────────────
+   JORDAN CLAY — Select Insurance Providers
+   ─────────────────────────────────────────────────────────────── */
+
+.partner-jordan-clay {
+  /* Select Insurance Brand Colors */
+  --color-accent-primary: #1a2e4a; /* Navy Blue */
+  --color-accent-secondary: #7bc4c4; /* Teal */
+  --color-accent-hover: #152439;
+  --color-text-primary: #333;
+}
+
+.partner-jordan-clay .btn--primary {
+  background-color: var(--color-accent-primary);
+  border-radius: 4px;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 4px rgba(26, 46, 74, 0.2);
+  transition: all 0.25s ease;
+}
+
+.partner-jordan-clay .btn--primary:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 4px 8px rgba(26, 46, 74, 0.3);
+  transform: translateY(-2px);
+}
+
+.partner-jordan-clay .btn--secondary {
+  border-radius: 4px;
+  border: 2px solid var(--color-accent-primary);
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+}
+
+.partner-jordan-clay .btn--secondary:hover {
+  background-color: var(--color-accent-secondary);
+  border-color: var(--color-accent-secondary);
+  color: white;
+}
+
+.partner-jordan-clay .partner-hero {
+  background: linear-gradient(135deg, var(--color-accent-primary), #2a4566);
+}
+
+.partner-jordan-clay .partner-hero-name,
+.partner-jordan-clay .partner-hero-role {
+  color: white;
+}
+
+.partner-jordan-clay .partner-content h2 {
+  color: var(--color-accent-primary);
+  font-weight: 600;
+}
+
+.partner-jordan-clay .partner-bio {
+  color: var(--color-text-primary);
+}

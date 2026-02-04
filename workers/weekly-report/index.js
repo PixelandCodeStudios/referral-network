@@ -13,7 +13,8 @@ const PARTNER_EMAILS = {
   "brian-dow": "sales@myhst.com",
   "joshua-naylor": "josh@thenaylorgroup.com",
   "tiffany-mcalister": "tiffany@dreamlivingflorida.com",
-  "tom-berry": "info@longviewwealthadvisors.com", // Update with actual email
+  "tom-berry": "info@longviewwealthadvisors.com",
+  "jordan-clay": "jordan@selectinsuranceproviders.com",
 };
 
 const PARTNER_NAMES = {
@@ -21,6 +22,7 @@ const PARTNER_NAMES = {
   "joshua-naylor": "Joshua Naylor - The Naylor Group",
   "tiffany-mcalister": "Tiffany McAlister - Dream Living Florida",
   "tom-berry": "Tom Berry - Longview Wealth Advisors",
+  "jordan-clay": "Jordan Clay - Select Insurance Providers",
 };
 
 export default {
