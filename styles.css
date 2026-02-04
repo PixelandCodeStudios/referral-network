@@ -277,8 +277,8 @@ a:hover {
    ═══════════════════════════════════════════════════════════════ */
 
 .site-header {
-  padding-top: var(--space-5xl);
-  padding-bottom: var(--space-5xl);
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
   text-align: center;
   position: relative;
   overflow: hidden;
