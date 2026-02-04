@@ -942,7 +942,7 @@ a:hover {
   content: "";
   position: absolute;
   inset: 6px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: calc(var(--radius-xl) - 6px);
   pointer-events: none;
   z-index: 1;
