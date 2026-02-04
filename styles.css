@@ -418,11 +418,12 @@ a:hover {
   background: var(--gradient-card-light);
   border: 1px solid var(--color-light-accent);
   border-radius: var(--radius-xl);
-  padding: var(--space-3xl);
+  padding: var(--space-2xl);
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: var(--space-2xl);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xl);
   text-decoration: none;
   color: var(--color-text-on-light);
   position: relative;
@@ -475,28 +476,28 @@ a:hover {
 
 /* Avatar — Elegant Portrait */
 .partner-avatar {
-  width: 140px;
-  height: 140px;
-  min-width: 140px;
-  border-radius: var(--radius-lg);
+  width: 200px;
+  height: 200px;
+  min-width: 200px;
+  border-radius: var(--radius-xl);
   background: var(--color-light-accent);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 3px solid rgba(0, 0, 0, 0.08);
   transition: all var(--transition-base);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* Decorative frame */
 .partner-avatar::before {
   content: '';
   position: absolute;
-  inset: 4px;
+  inset: 6px;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: calc(var(--radius-lg) - 4px);
+  border-radius: calc(var(--radius-xl) - 6px);
   pointer-events: none;
   z-index: 1;
 }
@@ -527,10 +528,10 @@ a:hover {
 
 /* Partner Info */
 .partner-info {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  align-items: center;
+  width: 100%;
 }
 
 .partner-name {
@@ -564,6 +565,7 @@ a:hover {
   flex-direction: column;
   gap: var(--space-sm);
   margin-bottom: var(--space-lg);
+  width: 100%;
 }
 
 .partner-contact-item {
@@ -571,6 +573,7 @@ a:hover {
   color: var(--color-text-secondary-on-light);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
   background: rgba(0, 0, 0, 0.03);
@@ -597,15 +600,17 @@ a:hover {
 .partner-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-sm);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-gold-dark);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
-  margin-top: auto;
-  padding-top: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-lg);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
   transition: all var(--transition-base);
 }
 
@@ -626,16 +631,13 @@ a:hover {
 /* Mobile Card Layout */
 @media (max-width: 640px) {
   .partner-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
     padding: var(--space-xl);
   }
 
   .partner-avatar {
-    width: 120px;
-    height: 120px;
-    min-width: 120px;
+    width: 160px;
+    height: 160px;
+    min-width: 160px;
   }
 
   .partner-contact-item {
