@@ -769,6 +769,45 @@ a:hover {
   bottom: 0;
 }
 
+/* Professional corner accents */
+.trust-content::before,
+.trust-content::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* Top-left corner accent */
+.trust-content::before {
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-gold-dark) 0%,
+    var(--color-gold-dark) 25%,
+    transparent 25%,
+    transparent 50%
+  );
+  background-size: 40px 40px;
+}
+
+/* Bottom-right corner accent */
+.trust-content::after {
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    315deg,
+    var(--color-gold-dark) 0%,
+    var(--color-gold-dark) 25%,
+    transparent 25%,
+    transparent 50%
+  );
+  background-size: 40px 40px;
+}
+
 .trust-content {
   max-width: var(--width-narrow);
   margin-left: auto;
