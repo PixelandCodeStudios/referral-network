@@ -827,23 +827,25 @@ a:hover {
 }
 
 .partner-hero-avatar {
-  width: 160px;
-  height: 160px;
-  border-radius: var(--radius-xl);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
   background: var(--color-bg-elevated);
-  border: 2px solid var(--color-border-accent);
+  border: 4px solid rgba(255, 255, 255, 0.2);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--space-xl);
   overflow: hidden;
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), var(--shadow-glow);
 }
 
 .partner-hero-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
 }
 
 .partner-hero-name {
