@@ -879,8 +879,8 @@ a:hover {
 }
 
 .partner-hero-avatar {
-  width: 346px;
-  height: 346px;
+  width: 415px;
+  height: 415px;
   border-radius: var(--radius-xl);
   background: var(--color-light-warm);
   border: 3px solid rgba(255, 255, 255, 0.15);
@@ -907,7 +907,7 @@ a:hover {
 .partner-hero-avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   border-radius: calc(var(--radius-xl) - 3px);
 }
