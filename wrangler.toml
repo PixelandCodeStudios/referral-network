@@ -1,0 +1,50 @@
+# Pages configuration
+  pages_build_output_dir = "."
+# Cloudflare Workers Configuration for Referral Network
+# This file configures both the analytics worker and weekly report worker
+
+# =============================================================================
+# ANALYTICS WORKER - Real-time event handling and notifications
+# =============================================================================
+[[workers]]
+name = "referral-analytics"
+main = "workers/analytics/index.js"
+compatibility_date = "2024-01-01"
+
+# Bind D1 database
+[[workers.d1_databases]]
+binding = "DB"
+database_name = "referral-analytics-db"
+database_id = "" # Will be filled after creating D1 database
+
+# Environment variables (update these)
+[workers.vars]
+FROM_EMAIL = "notifications@referralnetwork.com"
+FROM_NAME = "Referral Network Notifications"
+
+# =============================================================================
+# WEEKLY REPORT WORKER - Scheduled analytics summaries
+# =============================================================================
+[[workers]]
+name = "referral-weekly-report"
+main = "workers/weekly-report/index.js"
+compatibility_date = "2024-01-01"
+
+# Bind D1 database
+[[workers.d1_databases]]
+binding = "DB"
+database_name = "referral-analytics-db"
+database_id = "" # Same database as analytics worker
+
+# Cron trigger: Every Tuesday at 11:00 UTC (6:00 AM EST)
+[workers.triggers]
+crons = ["0 11 * * 2"]
+
+# Environment variables
+[workers.vars]
+FROM_EMAIL = "reports@referralnetwork.com"
+FROM_NAME = "Referral Network Analytics"
+
+# Secret for manual report triggers (set via: wrangler secret put REPORT_SECRET)
+[workers.secrets]
+REPORT_SECRET = ""

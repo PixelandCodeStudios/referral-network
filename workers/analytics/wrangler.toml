@@ -1,0 +1,15 @@
+# Cloudflare Worker - Analytics Event Handler
+name = "referral-analytics"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Bind D1 database
+[[d1_databases]]
+binding = "DB"
+database_name = "referral-analytics-db"
+database_id = "50aa2341-12ad-406d-8905-f40b398c8dc0"
+
+# Environment variables
+[vars]
+FROM_EMAIL = "notifications@referralnetwork.com"
+FROM_NAME = "Referral Network Notifications"
