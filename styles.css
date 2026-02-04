@@ -879,8 +879,8 @@ a:hover {
 }
 
 .partner-hero-avatar {
-  width: 288px;
-  height: 288px;
+  width: 346px;
+  height: 346px;
   border-radius: var(--radius-xl);
   background: var(--color-light-warm);
   border: 3px solid rgba(255, 255, 255, 0.15);
