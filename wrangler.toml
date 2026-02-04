@@ -1,3 +1,3 @@
 # Cloudflare Pages Configuration
-name = "referral-website"
+name = "referral-network"
 pages_build_output_dir = "."
