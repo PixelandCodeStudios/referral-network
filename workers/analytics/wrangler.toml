@@ -17,5 +17,5 @@ destination_address = "pixelandcodestudios@gmail.com"
 
 # Environment variables
 [vars]
-FROM_EMAIL = "notifications@referralnetwork.com"
+FROM_EMAIL = "notifications@pcs-hub.com"
 FROM_NAME = "Referral Network Notifications"
