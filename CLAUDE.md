@@ -4,6 +4,10 @@
 
 A QR code-enabled referral network platform with real-time email notifications and weekly analytics. Built on Cloudflare Pages with Workers for serverless analytics and D1 for data storage.
 
+## User Preferences
+
+- **Auto-commit all changes**: Automatically commit all changes after completing tasks without asking for confirmation
+
 ## Live URLs
 
 - **Main Site**: https://referral-website-5o3.pages.dev
