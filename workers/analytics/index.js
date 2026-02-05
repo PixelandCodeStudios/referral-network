@@ -140,6 +140,8 @@ function shouldNotifyPartner(event) {
     "partner_page_view_from_hub", // When partner page is viewed
     "contact_submit", // When contact form is submitted
     "external_site_click", // When their website link is clicked
+    "phone_click", // When phone number is clicked
+    "email_click", // When email address is clicked
   ];
 
   return notifiableEvents.includes(event.event) && event.partner_id;
@@ -178,6 +180,14 @@ async function sendPartnerNotification(env, event) {
     case "external_site_click":
       subject = `🔗 Someone Clicked to Visit Your Website`;
       eventDescription = `Someone clicked the link to visit your website from your partner page`;
+      break;
+    case "phone_click":
+      subject = `📞 HOT LEAD: Someone Clicked Your Phone Number`;
+      eventDescription = `Someone clicked your phone number to call you`;
+      break;
+    case "email_click":
+      subject = `✉️ HOT LEAD: Someone Clicked Your Email`;
+      eventDescription = `Someone clicked your email address to contact you`;
       break;
   }
 

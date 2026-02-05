@@ -46,6 +46,8 @@ const ANALYTICS_CONFIG = {
     PARTNER_VIEW_DIRECT: "partner_page_view_direct",
     CONTACT_SUBMIT: "contact_submit",
     EXTERNAL_SITE_CLICK: "external_site_click",
+    PHONE_CLICK: "phone_click",
+    EMAIL_CLICK: "email_click",
   },
 };
 
@@ -388,6 +390,66 @@ function initExternalSiteTracking() {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// PHONE NUMBER CLICK TRACKING
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Track phone number clicks
+ *
+ * HOOK POINT: phone_click event
+ * Fires when: User clicks a phone number link
+ * Purpose: Track leads attempting to call
+ */
+function initPhoneTracking() {
+  const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+
+  phoneLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const phoneNumber = link.getAttribute("href").replace("tel:", "");
+      const partnerId = link.getAttribute("data-partner-id");
+      const referrerId = getReferrerId();
+
+      // Track phone click
+      trackEvent(ANALYTICS_CONFIG.events.PHONE_CLICK, {
+        partner_id: partnerId,
+        referrer_id: referrerId,
+        phone_number: phoneNumber,
+      });
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// EMAIL CLICK TRACKING
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Track email clicks
+ *
+ * HOOK POINT: email_click event
+ * Fires when: User clicks an email link
+ * Purpose: Track leads attempting to email
+ */
+function initEmailTracking() {
+  const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+
+  emailLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const email = link.getAttribute("href").replace("mailto:", "").split("?")[0];
+      const partnerId = link.getAttribute("data-partner-id");
+      const referrerId = getReferrerId();
+
+      // Track email click
+      trackEvent(ANALYTICS_CONFIG.events.EMAIL_CLICK, {
+        partner_id: partnerId,
+        referrer_id: referrerId,
+        email: email,
+      });
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
 // CONTEXT PRESERVATION FOR NAVIGATION
 // ═══════════════════════════════════════════════════════════════
 
@@ -437,6 +499,12 @@ function initAnalytics() {
 
   // Initialize external site tracking (partner page)
   initExternalSiteTracking();
+
+  // Initialize phone click tracking (partner page)
+  initPhoneTracking();
+
+  // Initialize email click tracking (partner page)
+  initEmailTracking();
 
   // Preserve context in navigation links
   preserveNavigationContext();
