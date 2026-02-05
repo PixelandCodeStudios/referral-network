@@ -86,7 +86,7 @@ export default {
  * Send contact form email notification
  */
 async function sendContactFormEmail(env, formData) {
-  const { name, email, phone, message, partnerId, referrerId, source } = formData;
+  const { name, email, phone, message, partnerId } = formData;
 
   // Create MIME message
   const msg = createMimeMessage();
@@ -143,14 +143,6 @@ async function sendContactFormEmail(env, formData) {
         <div class="label">Message</div>
         <div class="message-box">${message.replace(/\n/g, '<br>')}</div>
       </div>
-
-      <div class="meta">
-        <strong>Tracking Info:</strong><br>
-        Partner: ${partnerId}<br>
-        Referrer: ${referrerId}<br>
-        Source: ${source}<br>
-        Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST
-      </div>
     </div>
 
     <div class="footer">
@@ -171,13 +163,6 @@ PHONE: ${phone}
 
 MESSAGE:
 ${message}
-
----
-TRACKING INFO:
-Partner: ${partnerId}
-Referrer: ${referrerId}
-Source: ${source}
-Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST
   `.trim();
 
   msg.addMessage({
