@@ -245,15 +245,15 @@ img {
   }
 
   .container {
-    padding-left: var(--space-lg);
-    padding-right: var(--space-lg);
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
   }
 }
 
@@ -748,8 +748,8 @@ a:hover {
   }
 
   .partner-contact-item {
-    justify-content: flex-start;
-    text-align: left;
+    justify-content: center;
+    text-align: center;
     flex-wrap: wrap;
     font-size: 0.75rem; /* 12px - smaller on mobile */
     word-break: break-word; /* Break long words */
@@ -997,8 +997,8 @@ a:hover {
   }
 
   .partner-hero-avatar {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     margin-bottom: var(--space-lg);
   }
 
@@ -1017,8 +1017,8 @@ a:hover {
   }
 
   .partner-hero-avatar {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
   }
 
   .partner-hero-name {
