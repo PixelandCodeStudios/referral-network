@@ -318,9 +318,8 @@ function initContactFormTracking() {
   const contactForm = document.getElementById("contact-form");
   if (!contactForm) return;
 
-  contactForm.addEventListener("submit", (e) => {
-    // Note: This runs before form submission
-    // In production, you might preventDefault() and submit via fetch
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
     const partnerId = document.getElementById("form-partner-id")?.value;
     const referrerId = document.getElementById("form-referrer-id")?.value;
@@ -334,29 +333,43 @@ function initContactFormTracking() {
       has_context: !!referrerId,
     });
 
-    /*
-      FUTURE: Handle form submission via fetch
+    // Get form data
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
 
-      e.preventDefault();
+    // Add tracking fields
+    data.partner_id = partnerId;
+    data.referrer_id = referrerId;
+    data.source = source || "direct";
 
-      const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData.entries());
+    // Disable submit button
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
 
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
+    try {
+      const response = await fetch('https://referral-contact-form.contact-newleafllc.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
 
-        if (response.ok) {
-          // Show success message
-          // Redirect or clear form
-        }
-      } catch (error) {
-        // Handle error
+      if (response.ok) {
+        // Show success message
+        alert('Thank you! Your message has been sent successfully.');
+        contactForm.reset();
+      } else {
+        throw new Error('Failed to send message');
       }
-    */
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Sorry, there was an error sending your message. Please try again or contact us directly.');
+    } finally {
+      // Re-enable submit button
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
   });
 }
 

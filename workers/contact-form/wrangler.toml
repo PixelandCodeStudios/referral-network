@@ -1,0 +1,20 @@
+# Cloudflare Worker - Contact Form Handler
+name = "referral-contact-form"
+main = "index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+account_id = "45d1e1be26c9a77b911d7b5b0225945a"
+
+# Email sending binding (Cloudflare Email Workers)
+[[send_email]]
+name = "EMAIL"
+destination_address = "pixelandcodestudios@gmail.com"
+
+# Environment variables
+[vars]
+FROM_EMAIL = "forms@pcs-hub.com"
+FROM_NAME = "Referral Network Forms"
+ADMIN_EMAIL = "pixelandcodestudios@gmail.com"
+
+# NOTE: In the future, emails will be sent to respective partners
+# based on partner_id from the form submission
