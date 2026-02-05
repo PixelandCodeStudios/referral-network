@@ -643,6 +643,12 @@ a:hover {
   transform: scale(1.05);
 }
 
+/* Specific positioning for Tiffany and Tom's images */
+.partner-avatar img[src*="tiffany-mcalister"],
+.partner-avatar img[src*="tom-berry"] {
+  object-position: center 0%;
+}
+
 /* Partner Info */
 .partner-info {
   display: flex;
