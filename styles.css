@@ -480,6 +480,10 @@ a:hover {
     justify-content: center;
   }
 
+  .site-emblem--small {
+    display: none;
+  }
+
   .site-title {
     font-size: var(--font-size-3xl);
   }
