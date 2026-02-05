@@ -644,9 +644,12 @@ a:hover {
 }
 
 /* Specific positioning for Tiffany and Tom's images */
-.partner-avatar img[src*="tiffany-mcalister"],
-.partner-avatar img[src*="tom-berry"] {
+.partner-avatar img[src*="tiffany-mcalister"] {
   object-position: center 0%;
+}
+
+.partner-avatar img[src*="tom-berry"] {
+  object-position: center -5%;
 }
 
 /* Partner Info */
