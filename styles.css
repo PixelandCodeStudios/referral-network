@@ -1101,6 +1101,16 @@ a:hover {
   .contact-form {
     padding: var(--space-md);
   }
+
+  .form-input,
+  .form-textarea {
+    font-size: 0.875rem; /* 14px - smaller for better placeholder visibility */
+    padding: 0.875rem; /* Slightly reduced padding */
+  }
+
+  .form-label {
+    font-size: 0.75rem; /* 12px - smaller labels on mobile */
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
