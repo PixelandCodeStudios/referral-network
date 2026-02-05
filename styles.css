@@ -479,7 +479,7 @@ a:hover {
   }
 
   .header-brand-link {
-    margin: 0;
+    transform: translateX(24px); /* Shift right by half icon width for visual centering */
   }
 
   .site-title {
