@@ -1754,3 +1754,69 @@ textarea:focus-visible {
 .partner-jordan-clay .partner-bio {
   color: var(--color-text-primary);
 }
+
+/* ───────────────────────────────────────────────────────────────
+   TERESA FITZPATRICK — Fitzpatrick & Fitzpatrick Attorneys
+   ─────────────────────────────────────────────────────────────── */
+
+.partner-teresa-fitzpatrick {
+  /* Fitzpatrick & Fitzpatrick Brand Colors */
+  --color-accent-primary: #1a2e4a; /* Navy Blue */
+  --color-accent-secondary: #c9a962; /* Gold */
+  --color-accent-hover: #152439;
+  --color-accent-light: #3a6ea5; /* Light Blue */
+  --color-text-primary: #333;
+}
+
+.partner-teresa-fitzpatrick .btn--primary {
+  background-color: var(--color-accent-secondary);
+  color: var(--color-accent-primary);
+  border-radius: 4px;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 4px rgba(201, 169, 98, 0.3);
+  transition: all 0.25s ease;
+}
+
+.partner-teresa-fitzpatrick .btn--primary:hover {
+  background-color: #b89650;
+  box-shadow: 0 4px 8px rgba(201, 169, 98, 0.4);
+  transform: translateY(-2px);
+}
+
+.partner-teresa-fitzpatrick .btn--secondary {
+  border-radius: 4px;
+  border: 2px solid var(--color-accent-primary);
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+}
+
+.partner-teresa-fitzpatrick .btn--secondary:hover {
+  background-color: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  color: white;
+}
+
+.partner-teresa-fitzpatrick .partner-hero {
+  background: linear-gradient(135deg, var(--color-accent-primary), #2a4566);
+}
+
+.partner-teresa-fitzpatrick .partner-hero-name,
+.partner-teresa-fitzpatrick .partner-hero-role {
+  color: white;
+}
+
+.partner-teresa-fitzpatrick .partner-content h2 {
+  color: var(--color-accent-primary);
+  font-weight: 600;
+}
+
+.partner-teresa-fitzpatrick .partner-bio {
+  color: var(--color-text-primary);
+}
+
+.partner-teresa-fitzpatrick .contact-form {
+  border-top: 3px solid var(--color-accent-secondary);
+}

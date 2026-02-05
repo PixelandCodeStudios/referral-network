@@ -14,6 +14,7 @@ export const PARTNER_EMAILS = {
   "tiffany-mcalister": "tiffany@dreamlivingflorida.com",
   "tom-berry": "info@longviewwealthadvisors.com",
   "jordan-clay": "jordan@selectinsuranceproviders.com",
+  "teresa-fitzpatrick": "Teresa@Fitzpatricklawyers.com",
 };
 
 export const PARTNER_NAMES = {
@@ -22,6 +23,7 @@ export const PARTNER_NAMES = {
   "tiffany-mcalister": "Tiffany McAlister",
   "tom-berry": "Tom Berry",
   "jordan-clay": "Jordan Clay",
+  "teresa-fitzpatrick": "Teresa Fitzpatrick",
 };
 
 // Admin email - receives copy of all partner notifications
