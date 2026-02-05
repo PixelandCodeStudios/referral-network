@@ -25,7 +25,7 @@ export default {
     if (request.method !== "POST") {
       return new Response("Method not allowed", {
         status: 405,
-        headers: CORS_HEADERS
+        headers: CORS_HEADERS,
       });
     }
 
@@ -35,13 +35,10 @@ export default {
 
       // Validate required fields
       if (!data.name || !data.email || !data.message) {
-        return new Response(
-          JSON.stringify({ error: "Missing required fields" }),
-          {
-            status: 400,
-            headers: { ...CORS_HEADERS, "Content-Type": "application/json" }
-          }
-        );
+        return new Response(JSON.stringify({ error: "Missing required fields" }), {
+          status: 400,
+          headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+        });
       }
 
       // Get partner and referrer info
@@ -57,29 +54,25 @@ export default {
         message: data.message,
         partnerId,
         referrerId,
-        source
+        source,
       });
 
       return new Response(
         JSON.stringify({ success: true, message: "Form submitted successfully" }),
         {
           status: 200,
-          headers: { ...CORS_HEADERS, "Content-Type": "application/json" }
+          headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
         }
       );
-
     } catch (error) {
       console.error("Form submission error:", error);
 
-      return new Response(
-        JSON.stringify({ error: "Failed to submit form" }),
-        {
-          status: 500,
-          headers: { ...CORS_HEADERS, "Content-Type": "application/json" }
-        }
-      );
+      return new Response(JSON.stringify({ error: "Failed to submit form" }), {
+        status: 500,
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" },
+      });
     }
-  }
+  },
 };
 
 /**
@@ -92,7 +85,7 @@ async function sendContactFormEmail(env, formData) {
   const msg = createMimeMessage();
   msg.setSender({
     name: env.FROM_NAME || "Referral Network Forms",
-    addr: env.FROM_EMAIL || "forms@pcs-hub.com"
+    addr: env.FROM_EMAIL || "forms@pcs-hub.com",
   });
   msg.setRecipient(env.ADMIN_EMAIL || "pixelandcodestudios@gmail.com");
   msg.setSubject(`New Contact Form Submission - ${partnerId}`);
@@ -141,7 +134,7 @@ async function sendContactFormEmail(env, formData) {
 
       <div class="field">
         <div class="label">Message</div>
-        <div class="message-box">${message.replace(/\n/g, '<br>')}</div>
+        <div class="message-box">${message.replace(/\n/g, "<br>")}</div>
       </div>
     </div>
 

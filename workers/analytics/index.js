@@ -14,8 +14,8 @@ import { shouldNotifyPartner, sendPartnerNotification } from "../shared/email-no
 
 // Rate limiting configuration
 const RATE_LIMITS = {
-  PER_IP_PER_MINUTE: 10,    // 10 requests per minute per IP
-  WINDOW_SECONDS: 60
+  PER_IP_PER_MINUTE: 10, // 10 requests per minute per IP
+  WINDOW_SECONDS: 60,
 };
 
 /**
@@ -24,47 +24,47 @@ const RATE_LIMITS = {
 async function checkRateLimit(env, ip) {
   const ipKey = `rate_limit:ip:${ip}`;
   const now = Date.now();
-  const windowStart = now - (RATE_LIMITS.WINDOW_SECONDS * 1000);
+  const windowStart = now - RATE_LIMITS.WINDOW_SECONDS * 1000;
 
   // Get current count from KV
-  const data = await env.RATE_LIMIT_KV.get(ipKey, { type: 'json' });
+  const data = await env.RATE_LIMIT_KV.get(ipKey, { type: "json" });
 
   if (data) {
     // Filter requests within current window
-    const recentRequests = data.requests.filter(ts => ts > windowStart);
+    const recentRequests = data.requests.filter((ts) => ts > windowStart);
 
     if (recentRequests.length >= RATE_LIMITS.PER_IP_PER_MINUTE) {
       return {
         allowed: false,
         current: recentRequests.length,
         limit: RATE_LIMITS.PER_IP_PER_MINUTE,
-        resetIn: Math.ceil((recentRequests[0] + RATE_LIMITS.WINDOW_SECONDS * 1000 - now) / 1000)
+        resetIn: Math.ceil((recentRequests[0] + RATE_LIMITS.WINDOW_SECONDS * 1000 - now) / 1000),
       };
     }
 
     // Add current request
     recentRequests.push(now);
     await env.RATE_LIMIT_KV.put(ipKey, JSON.stringify({ requests: recentRequests }), {
-      expirationTtl: RATE_LIMITS.WINDOW_SECONDS
+      expirationTtl: RATE_LIMITS.WINDOW_SECONDS,
     });
 
     return {
       allowed: true,
       current: recentRequests.length,
       limit: RATE_LIMITS.PER_IP_PER_MINUTE,
-      remaining: RATE_LIMITS.PER_IP_PER_MINUTE - recentRequests.length
+      remaining: RATE_LIMITS.PER_IP_PER_MINUTE - recentRequests.length,
     };
   } else {
     // First request from this IP
     await env.RATE_LIMIT_KV.put(ipKey, JSON.stringify({ requests: [now] }), {
-      expirationTtl: RATE_LIMITS.WINDOW_SECONDS
+      expirationTtl: RATE_LIMITS.WINDOW_SECONDS,
     });
 
     return {
       allowed: true,
       current: 1,
       limit: RATE_LIMITS.PER_IP_PER_MINUTE,
-      remaining: RATE_LIMITS.PER_IP_PER_MINUTE - 1
+      remaining: RATE_LIMITS.PER_IP_PER_MINUTE - 1,
     };
   }
 }
@@ -104,8 +104,13 @@ export default {
       }
 
       // Check rate limit (skip for test sessions)
-      const isTestSession = event.session_id && event.session_id.startsWith('test_');
-      let rateLimitResult = { allowed: true, current: 0, limit: RATE_LIMITS.PER_IP_PER_MINUTE, remaining: RATE_LIMITS.PER_IP_PER_MINUTE };
+      const isTestSession = event.session_id && event.session_id.startsWith("test_");
+      let rateLimitResult = {
+        allowed: true,
+        current: 0,
+        limit: RATE_LIMITS.PER_IP_PER_MINUTE,
+        remaining: RATE_LIMITS.PER_IP_PER_MINUTE,
+      };
 
       if (!isTestSession) {
         const ip = request.headers.get("CF-Connecting-IP");
@@ -117,7 +122,7 @@ export default {
               error: "Rate limit exceeded",
               limit: rateLimitResult.limit,
               current: rateLimitResult.current,
-              resetIn: rateLimitResult.resetIn
+              resetIn: rateLimitResult.resetIn,
             }),
             {
               status: 429,
@@ -127,8 +132,8 @@ export default {
                 "X-RateLimit-Limit": rateLimitResult.limit.toString(),
                 "X-RateLimit-Remaining": "0",
                 "X-RateLimit-Reset": rateLimitResult.resetIn.toString(),
-                ...corsHeaders
-              }
+                ...corsHeaders,
+              },
             }
           );
         }
@@ -185,7 +190,7 @@ async function storeEvent(db, event) {
       event_type, session_id, referrer_id, partner_id,
       timestamp, url, ip, country, user_agent, data
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `,
+  `
     )
     .bind(
       event.event,
@@ -197,7 +202,7 @@ async function storeEvent(db, event) {
       event.ip,
       event.country,
       event.user_agent,
-      JSON.stringify(event),
+      JSON.stringify(event)
     )
     .run();
 }

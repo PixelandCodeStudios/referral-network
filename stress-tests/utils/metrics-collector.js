@@ -5,8 +5,8 @@
  * Calculates percentiles, error rates, throughput, and custom metrics
  */
 
-import { writeFile } from 'fs/promises';
-import { join } from 'path';
+import { writeFile } from "fs/promises";
+import { join } from "path";
 
 export class MetricsCollector {
   constructor(testName) {
@@ -19,7 +19,7 @@ export class MetricsCollector {
       total: 0,
       successful: 0,
       failed: 0,
-      errorsByCode: {}
+      errorsByCode: {},
     };
 
     // Latency tracking
@@ -34,7 +34,7 @@ export class MetricsCollector {
     this.database = {
       writes: 0,
       writesPerSecond: 0,
-      queryTimes: []
+      queryTimes: [],
     };
 
     // Custom metrics
@@ -67,7 +67,7 @@ export class MetricsCollector {
       const rps = this.requestsSinceLastCheck / elapsed;
       this.throughputData.push({
         timestamp: now,
-        requestsPerSecond: rps
+        requestsPerSecond: rps,
       });
       this.requestsSinceLastCheck = 0;
       this.lastThroughputCheck = now;
@@ -117,7 +117,7 @@ export class MetricsCollector {
         p50: 0,
         p95: 0,
         p99: 0,
-        p999: 0
+        p999: 0,
       };
     }
 
@@ -132,7 +132,7 @@ export class MetricsCollector {
       p50: this.calculatePercentile(sorted, 50),
       p95: this.calculatePercentile(sorted, 95),
       p99: this.calculatePercentile(sorted, 99),
-      p999: this.calculatePercentile(sorted, 99.9)
+      p999: this.calculatePercentile(sorted, 99.9),
     };
   }
 
@@ -168,7 +168,7 @@ export class MetricsCollector {
   getPeakThroughput() {
     if (this.throughputData.length === 0) return 0;
 
-    return Math.max(...this.throughputData.map(d => d.requestsPerSecond));
+    return Math.max(...this.throughputData.map((d) => d.requestsPerSecond));
   }
 
   /**
@@ -192,7 +192,7 @@ export class MetricsCollector {
       const rps = this.requestsSinceLastCheck / elapsed;
       this.throughputData.push({
         timestamp: now,
-        requestsPerSecond: rps
+        requestsPerSecond: rps,
       });
     }
 
@@ -217,11 +217,11 @@ export class MetricsCollector {
       endTime: new Date(this.endTime).toISOString(),
       duration: {
         seconds: duration,
-        minutes: duration / 60
+        minutes: duration / 60,
       },
       requests: {
         ...this.requests,
-        requestsPerSecond: this.requests.total / duration
+        requestsPerSecond: this.requests.total / duration,
       },
       latency: latencyStats,
       errorRate: this.getErrorRate(),
@@ -229,15 +229,16 @@ export class MetricsCollector {
       throughput: {
         average: this.getAverageThroughput(),
         peak: this.getPeakThroughput(),
-        data: this.throughputData
+        data: this.throughputData,
       },
       database: {
         ...this.database,
-        averageQueryTime: this.database.queryTimes.length > 0
-          ? this.database.queryTimes.reduce((a, b) => a + b, 0) / this.database.queryTimes.length
-          : 0
+        averageQueryTime:
+          this.database.queryTimes.length > 0
+            ? this.database.queryTimes.reduce((a, b) => a + b, 0) / this.database.queryTimes.length
+            : 0,
       },
-      custom: this.custom
+      custom: this.custom,
     };
   }
 
@@ -257,22 +258,24 @@ export class MetricsCollector {
   printSummary() {
     const summary = this.getSummary();
 
-    console.log('\n' + '='.repeat(60));
+    console.log("\n" + "=".repeat(60));
     console.log(`Test: ${summary.testName}`);
-    console.log('='.repeat(60));
+    console.log("=".repeat(60));
     console.log(`Duration: ${summary.duration.seconds.toFixed(2)}s`);
     console.log(`Total Requests: ${summary.requests.total}`);
-    console.log(`Successful: ${summary.requests.successful} (${(summary.successRate * 100).toFixed(2)}%)`);
+    console.log(
+      `Successful: ${summary.requests.successful} (${(summary.successRate * 100).toFixed(2)}%)`
+    );
     console.log(`Failed: ${summary.requests.failed} (${(summary.errorRate * 100).toFixed(2)}%)`);
 
     if (Object.keys(summary.requests.errorsByCode).length > 0) {
-      console.log('Errors by Status Code:');
+      console.log("Errors by Status Code:");
       for (const [code, count] of Object.entries(summary.requests.errorsByCode)) {
         console.log(`  ${code}: ${count}`);
       }
     }
 
-    console.log('\nLatency:');
+    console.log("\nLatency:");
     console.log(`  Min: ${summary.latency.min.toFixed(2)}ms`);
     console.log(`  Mean: ${summary.latency.mean.toFixed(2)}ms`);
     console.log(`  Median: ${summary.latency.median.toFixed(2)}ms`);
@@ -280,12 +283,12 @@ export class MetricsCollector {
     console.log(`  p99: ${summary.latency.p99.toFixed(2)}ms`);
     console.log(`  Max: ${summary.latency.max.toFixed(2)}ms`);
 
-    console.log('\nThroughput:');
+    console.log("\nThroughput:");
     console.log(`  Average: ${summary.throughput.average.toFixed(2)} req/sec`);
     console.log(`  Peak: ${summary.throughput.peak.toFixed(2)} req/sec`);
 
     if (summary.database.writes > 0) {
-      console.log('\nDatabase:');
+      console.log("\nDatabase:");
       console.log(`  Writes: ${summary.database.writes}`);
       console.log(`  Write Rate: ${summary.database.writesPerSecond.toFixed(2)} writes/sec`);
       if (summary.database.averageQueryTime > 0) {
@@ -293,7 +296,7 @@ export class MetricsCollector {
       }
     }
 
-    console.log('='.repeat(60) + '\n');
+    console.log("=".repeat(60) + "\n");
   }
 
   /**

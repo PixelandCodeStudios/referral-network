@@ -4,10 +4,10 @@
  * Generates HTML dashboard reports from test metrics
  */
 
-import { readdir, readFile, writeFile } from 'fs/promises';
-import { join } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { readdir, readFile, writeFile } from "fs/promises";
+import { join } from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -16,13 +16,13 @@ const __dirname = dirname(__filename);
  * Load all test results from reports directory
  */
 async function loadTestResults() {
-  const reportsDir = join(__dirname, '..', 'reports');
+  const reportsDir = join(__dirname, "..", "reports");
   const files = await readdir(reportsDir);
-  const jsonFiles = files.filter(f => f.endsWith('.json'));
+  const jsonFiles = files.filter((f) => f.endsWith(".json"));
 
   const results = [];
   for (const file of jsonFiles) {
-    const content = await readFile(join(reportsDir, file), 'utf-8');
+    const content = await readFile(join(reportsDir, file), "utf-8");
     results.push(JSON.parse(content));
   }
 
@@ -272,8 +272,8 @@ function generateSummaryCards(results) {
   const successRate = latest.successRate * 100;
   const throughput = latest.throughput.average;
 
-  const latencyStatus = avgLatency < 200 ? 'good' : avgLatency < 500 ? 'warning' : 'bad';
-  const successStatus = successRate > 99 ? 'good' : successRate > 95 ? 'warning' : 'bad';
+  const latencyStatus = avgLatency < 200 ? "good" : avgLatency < 500 ? "warning" : "bad";
+  const successStatus = successRate > 99 ? "good" : successRate > 95 ? "warning" : "bad";
 
   return `
     <div class="summary-cards">
@@ -308,13 +308,16 @@ function generateSummaryCards(results) {
  * Generate test results table
  */
 function generateTestResultsTable(results) {
-  if (results.length === 0) return '';
+  if (results.length === 0) return "";
 
-  const rows = results.map(result => {
-    const latencyClass = result.latency.p95 < 500 ? 'good' : result.latency.p95 < 1000 ? 'warning' : 'bad';
-    const successClass = result.successRate > 0.99 ? 'good' : result.successRate > 0.95 ? 'warning' : 'bad';
+  const rows = results
+    .map((result) => {
+      const latencyClass =
+        result.latency.p95 < 500 ? "good" : result.latency.p95 < 1000 ? "warning" : "bad";
+      const successClass =
+        result.successRate > 0.99 ? "good" : result.successRate > 0.95 ? "warning" : "bad";
 
-    return `
+      return `
       <tr>
         <td>${result.testName}</td>
         <td>${new Date(result.startTime).toLocaleString()}</td>
@@ -325,7 +328,8 @@ function generateTestResultsTable(results) {
         <td>${result.throughput.average.toFixed(1)} req/s</td>
       </tr>
     `;
-  }).join('');
+    })
+    .join("");
 
   return `
     <div class="test-results">
@@ -354,7 +358,7 @@ function generateTestResultsTable(results) {
  * Generate recommendations
  */
 function generateRecommendations(results) {
-  if (results.length === 0) return '';
+  if (results.length === 0) return "";
 
   const latest = results[0];
   const recommendations = [];
@@ -362,40 +366,43 @@ function generateRecommendations(results) {
   // Check latency
   if (latest.latency.p95 > 500) {
     recommendations.push({
-      priority: 'high',
-      title: 'High Response Latency Detected',
-      description: `p95 latency is ${latest.latency.p95.toFixed(0)}ms (target: <500ms). This is likely due to synchronous email sending blocking the response. Consider moving email notifications to an async queue.`
+      priority: "high",
+      title: "High Response Latency Detected",
+      description: `p95 latency is ${latest.latency.p95.toFixed(0)}ms (target: <500ms). This is likely due to synchronous email sending blocking the response. Consider moving email notifications to an async queue.`,
     });
   }
 
   // Check error rate
   if (latest.errorRate > 0.01) {
     recommendations.push({
-      priority: 'high',
-      title: 'Elevated Error Rate',
-      description: `Error rate is ${(latest.errorRate * 100).toFixed(2)}% (target: <1%). Review error logs and implement proper error handling and retry logic.`
+      priority: "high",
+      title: "Elevated Error Rate",
+      description: `Error rate is ${(latest.errorRate * 100).toFixed(2)}% (target: <1%). Review error logs and implement proper error handling and retry logic.`,
     });
   }
 
   // Check database writes
   if (latest.database.writes > 800) {
     recommendations.push({
-      priority: 'medium',
-      title: 'Approaching D1 Daily Write Limit',
-      description: `Test used ${latest.database.writes} database writes. Free tier limit is 1,000/day. Implement rate limiting to prevent quota exhaustion.`
+      priority: "medium",
+      title: "Approaching D1 Daily Write Limit",
+      description: `Test used ${latest.database.writes} database writes. Free tier limit is 1,000/day. Implement rate limiting to prevent quota exhaustion.`,
     });
   }
 
   // Default recommendations
   if (recommendations.length === 0) {
     recommendations.push({
-      priority: 'low',
-      title: 'Performance Within Acceptable Range',
-      description: 'All metrics are within target thresholds. Continue monitoring and consider implementing the following optimizations: image compression, font loading optimization, and caching strategy.'
+      priority: "low",
+      title: "Performance Within Acceptable Range",
+      description:
+        "All metrics are within target thresholds. Continue monitoring and consider implementing the following optimizations: image compression, font loading optimization, and caching strategy.",
     });
   }
 
-  const recommendationHTML = recommendations.map(rec => `
+  const recommendationHTML = recommendations
+    .map(
+      (rec) => `
     <div class="recommendation ${rec.priority}">
       <h3>
         ${rec.title}
@@ -403,7 +410,9 @@ function generateRecommendations(results) {
       </h3>
       <p>${rec.description}</p>
     </div>
-  `).join('');
+  `
+    )
+    .join("");
 
   return `
     <div class="recommendations">
@@ -421,13 +430,13 @@ export async function generateReport() {
     const results = await loadTestResults();
     const html = generateHTML(results);
 
-    const outputPath = join(__dirname, '..', 'reports', `dashboard-${Date.now()}.html`);
+    const outputPath = join(__dirname, "..", "reports", `dashboard-${Date.now()}.html`);
     await writeFile(outputPath, html);
 
     console.log(`✅ Report generated: ${outputPath}`);
     return outputPath;
   } catch (error) {
-    console.error('Error generating report:', error.message);
+    console.error("Error generating report:", error.message);
     throw error;
   }
 }
@@ -435,8 +444,8 @@ export async function generateReport() {
 // Allow running as standalone script
 if (import.meta.url === `file://${process.argv[1]}`) {
   generateReport()
-    .then(path => console.log(`Report saved to: ${path}`))
-    .catch(error => console.error('Failed to generate report:', error));
+    .then((path) => console.log(`Report saved to: ${path}`))
+    .catch((error) => console.error("Failed to generate report:", error));
 }
 
 export default { generateReport };

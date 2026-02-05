@@ -88,9 +88,7 @@ export async function sendPartnerNotification(env, event) {
   }
 
   // Get referral source info
-  const referralSource = event.referrer_id
-    ? `QR Code: ${event.referrer_id}`
-    : "Direct access";
+  const referralSource = event.referrer_id ? `QR Code: ${event.referrer_id}` : "Direct access";
   const location = event.country || "Unknown location";
 
   // Create email body
@@ -118,7 +116,7 @@ Referral Network Analytics
     const msg = createMimeMessage();
     msg.setSender({
       name: env.FROM_NAME || "Referral Network Notifications",
-      addr: env.FROM_EMAIL || "notifications@referralnetwork.com"
+      addr: env.FROM_EMAIL || "notifications@referralnetwork.com",
     });
     msg.setRecipient(ADMIN_EMAIL);
     msg.setSubject(subject);
@@ -135,9 +133,7 @@ Referral Network Analytics
     );
 
     await env.EMAIL.send(message);
-    console.log(
-      `Email sent to ${ADMIN_EMAIL} for ${partnerName} event: ${event.event}`,
-    );
+    console.log(`Email sent to ${ADMIN_EMAIL} for ${partnerName} event: ${event.event}`);
   } catch (error) {
     console.error(`Failed to send email:`, error);
   }

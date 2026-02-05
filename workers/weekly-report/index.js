@@ -31,9 +31,6 @@ const PARTNER_NAMES = {
 
 // Helper function to convert QR code ID to partner first name
 function getPartnerNameFromQR(qrCode) {
-  // Extract partner ID from QR code (e.g., "qr-brian" -> "brian-dow")
-  const partnerId = qrCode.replace("qr-", "").replace("brian", "brian-dow").replace("joshua", "joshua-naylor").replace("tiffany", "tiffany-mcalister").replace("tom", "tom-berry").replace("jordan", "jordan-clay");
-
   // Map common QR codes to partners
   const qrToPartner = {
     "qr-brian": "brian-dow",
@@ -58,7 +55,7 @@ function getPartnerNameFromQR(qrCode) {
 
 export default {
   // Handle scheduled cron trigger
-  async scheduled(event, env, ctx) {
+  async scheduled(event, env, _ctx) {
     console.log("Running weekly analytics report...");
 
     try {
@@ -69,14 +66,7 @@ export default {
 
       // Generate and send reports for each partner
       for (const [partnerId, email] of Object.entries(PARTNER_EMAILS)) {
-        await generateAndSendReport(
-          env.DB,
-          partnerId,
-          email,
-          startDate,
-          endDate,
-          env,
-        );
+        await generateAndSendReport(env.DB, partnerId, email, startDate, endDate, env);
       }
 
       console.log("Weekly reports sent successfully");
@@ -88,12 +78,9 @@ export default {
   // Also allow manual triggering via HTTP
   async fetch(request, env) {
     if (request.method !== "POST") {
-      return new Response(
-        "Method not allowed. Use POST to trigger manual report.",
-        {
-          status: 405,
-        },
-      );
+      return new Response("Method not allowed. Use POST to trigger manual report.", {
+        status: 405,
+      });
     }
 
     // TEMPORARY: Auth disabled for testing
@@ -112,14 +99,7 @@ export default {
 
     try {
       for (const [partnerId, email] of Object.entries(PARTNER_EMAILS)) {
-        await generateAndSendReport(
-          env.DB,
-          partnerId,
-          email,
-          startDate,
-          endDate,
-          env,
-        );
+        await generateAndSendReport(env.DB, partnerId, email, startDate, endDate, env);
       }
 
       return new Response(
@@ -129,7 +109,7 @@ export default {
         }),
         {
           headers: { "Content-Type": "application/json" },
-        },
+        }
       );
     } catch (error) {
       return new Response(
@@ -140,7 +120,7 @@ export default {
         {
           status: 500,
           headers: { "Content-Type": "application/json" },
-        },
+        }
       );
     }
   },
@@ -182,7 +162,7 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
       AND partner_id = ?
       AND timestamp >= ?
       AND timestamp <= ?
-  `,
+  `
     )
     .bind(partnerId, startISO, endISO)
     .first();
@@ -197,7 +177,7 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
       AND partner_id = ?
       AND timestamp >= ?
       AND timestamp <= ?
-  `,
+  `
     )
     .bind(partnerId, startISO, endISO)
     .first();
@@ -212,7 +192,7 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
       AND partner_id = ?
       AND timestamp >= ?
       AND timestamp <= ?
-  `,
+  `
     )
     .bind(partnerId, startISO, endISO)
     .first();
@@ -227,7 +207,7 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
       AND partner_id = ?
       AND timestamp >= ?
       AND timestamp <= ?
-  `,
+  `
     )
     .bind(partnerId, startISO, endISO)
     .first();
@@ -242,7 +222,7 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
       AND partner_id = ?
       AND timestamp >= ?
       AND timestamp <= ?
-  `,
+  `
     )
     .bind(partnerId, startISO, endISO)
     .first();
@@ -257,7 +237,7 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
       AND partner_id = ?
       AND timestamp >= ?
       AND timestamp <= ?
-  `,
+  `
     )
     .bind(partnerId, startISO, endISO)
     .first();
@@ -273,7 +253,7 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
       AND timestamp >= ?
       AND timestamp <= ?
     GROUP BY referrer_id
-  `,
+  `
     )
     .bind(partnerId, startISO, endISO)
     .all();
@@ -290,7 +270,7 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
       AND timestamp >= ?
       AND timestamp <= ?
     GROUP BY referrer_id
-  `,
+  `
     )
     .bind(partnerId, startISO, endISO)
     .all();
@@ -301,17 +281,19 @@ async function getPartnerStats(db, partnerId, startDate, endDate) {
     leadsByReferrer[row.referrer_id] = row.leads;
   });
 
-  const topQRCodes = (qrScans.results || []).map((qr) => {
-    const leads = leadsByReferrer[qr.referrer_id] || 0;
-    const conversionRate = qr.scans > 0 ? ((leads / qr.scans) * 100).toFixed(0) : 0;
-    return {
-      referrer_id: qr.referrer_id,
-      partnerName: getPartnerNameFromQR(qr.referrer_id),
-      scans: qr.scans,
-      leads: leads,
-      conversionRate: conversionRate,
-    };
-  }).sort((a, b) => b.scans - a.scans); // Sort by most interactions
+  const topQRCodes = (qrScans.results || [])
+    .map((qr) => {
+      const leads = leadsByReferrer[qr.referrer_id] || 0;
+      const conversionRate = qr.scans > 0 ? ((leads / qr.scans) * 100).toFixed(0) : 0;
+      return {
+        referrer_id: qr.referrer_id,
+        partnerName: getPartnerNameFromQR(qr.referrer_id),
+        scans: qr.scans,
+        leads: leads,
+        conversionRate: conversionRate,
+      };
+    })
+    .sort((a, b) => b.scans - a.scans); // Sort by most interactions
 
   return {
     cardClicks: cardClicks?.count || 0,
@@ -351,7 +333,7 @@ function formatReportEmail(partnerName, stats, startDate, endDate) {
     qrBreakdown = stats.topQRCodes
       .map(
         (qr) =>
-          `  • ${qr.partnerName}: ${qr.scans} interaction${qr.scans > 1 ? "s" : ""}, ${qr.leads} lead${qr.leads !== 1 ? "s" : ""} (${qr.conversionRate}% conversion)`,
+          `  • ${qr.partnerName}: ${qr.scans} interaction${qr.scans > 1 ? "s" : ""}, ${qr.leads} lead${qr.leads !== 1 ? "s" : ""} (${qr.conversionRate}% conversion)`
       )
       .join("\n");
 
@@ -362,7 +344,12 @@ function formatReportEmail(partnerName, stats, startDate, endDate) {
     }
   }
 
-  const totalEngagement = stats.cardClicks + stats.pageViews + stats.websiteClicks + stats.clicksToContact + stats.contactSubmissions;
+  const totalEngagement =
+    stats.cardClicks +
+    stats.pageViews +
+    stats.websiteClicks +
+    stats.clicksToContact +
+    stats.contactSubmissions;
   const totalLeads = stats.clicksToContact + stats.contactSubmissions;
 
   return `
@@ -414,7 +401,7 @@ function formatReportEmailHTML(partnerName, stats, startDate, endDate) {
             <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; font-weight: 500;">${qr.partnerName}</td>
             <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 600;">${qr.scans}</td>
             <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 600; color: #059669;">${qr.leads}</td>
-            <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 700; color: ${qr.conversionRate >= 50 ? '#059669' : '#6b7280'};">${qr.conversionRate}%</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: center; font-weight: 700; color: ${qr.conversionRate >= 50 ? "#059669" : "#6b7280"};">${qr.conversionRate}%</td>
           </tr>
         `
       )
@@ -437,9 +424,15 @@ function formatReportEmailHTML(partnerName, stats, startDate, endDate) {
     `;
   }
 
-  const totalEngagement = stats.cardClicks + stats.pageViews + stats.websiteClicks + stats.clicksToContact + stats.contactSubmissions;
+  const totalEngagement =
+    stats.cardClicks +
+    stats.pageViews +
+    stats.websiteClicks +
+    stats.clicksToContact +
+    stats.contactSubmissions;
   const totalLeads = stats.clicksToContact + stats.contactSubmissions;
-  const conversionRate = totalEngagement > 0 ? ((totalLeads / totalEngagement) * 100).toFixed(1) : 0;
+  const conversionRate =
+    totalEngagement > 0 ? ((totalLeads / totalEngagement) * 100).toFixed(1) : 0;
 
   return `
 <!DOCTYPE html>
@@ -535,9 +528,10 @@ function formatReportEmailHTML(partnerName, stats, startDate, endDate) {
           <li style="margin-bottom: 8px;">Total Engagement: <strong>${totalEngagement}</strong> interactions</li>
           <li style="margin-bottom: 8px;">Total Leads: <strong>${totalLeads}</strong> (${stats.clicksToContact} direct contact + ${stats.contactSubmissions} form submissions)</li>
           <li style="margin-bottom: 8px;">Lead Conversion Rate: <strong>${conversionRate}%</strong></li>
-          ${totalLeads > 0
-            ? `<li>🎉 <strong>Great job!</strong> You generated ${totalLeads} lead${totalLeads > 1 ? "s" : ""} this week!</li>`
-            : `<li>Focus on driving more traffic to your page to increase leads</li>`
+          ${
+            totalLeads > 0
+              ? `<li>🎉 <strong>Great job!</strong> You generated ${totalLeads} lead${totalLeads > 1 ? "s" : ""} this week!</li>`
+              : `<li>Focus on driving more traffic to your page to increase leads</li>`
           }
         </ul>
       </div>
@@ -584,11 +578,7 @@ async function sendReportEmail(email, partnerName, bodyText, bodyHTML, startDate
     data: bodyHTML,
   });
 
-  const message = new EmailMessage(
-    env.FROM_EMAIL || "reports@pcs-hub.com",
-    email,
-    msg.asRaw(),
-  );
+  const message = new EmailMessage(env.FROM_EMAIL || "reports@pcs-hub.com", email, msg.asRaw());
 
   try {
     await env.EMAIL.send(message);

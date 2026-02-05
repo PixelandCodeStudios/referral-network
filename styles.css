@@ -58,22 +58,10 @@
   --color-border-accent: rgba(201, 162, 39, 0.3);
 
   /* GRADIENTS — Artistic Depth */
-  --gradient-gold: linear-gradient(
-    135deg,
-    var(--color-gold) 0%,
-    var(--color-copper) 100%
-  );
-  --gradient-dark: linear-gradient(
-    180deg,
-    var(--color-bg-primary) 0%,
-    var(--color-void) 100%
-  );
+  --gradient-gold: linear-gradient(135deg, var(--color-gold) 0%, var(--color-copper) 100%);
+  --gradient-dark: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-void) 100%);
   --gradient-card: linear-gradient(145deg, #2a2a2f 0%, #1f1f23 100%);
-  --gradient-glow: radial-gradient(
-    ellipse at center,
-    rgba(201, 162, 39, 0.15) 0%,
-    transparent 70%
-  );
+  --gradient-glow: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
   --gradient-card-light: linear-gradient(
     145deg,
     var(--color-light-cream) 0%,
@@ -357,12 +345,7 @@ a:hover {
   transform: translateX(-50%);
   width: 200px;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-gold),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
 }
 
 .site-title {
@@ -540,11 +523,7 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse at top left,
-    rgba(201, 162, 39, 0.08) 0%,
-    transparent 50%
-  );
+  background: radial-gradient(ellipse at top left, rgba(201, 162, 39, 0.08) 0%, transparent 50%);
   opacity: 0;
   transition: opacity var(--transition-slow);
 }
@@ -557,11 +536,7 @@ a:hover {
   right: 0;
   width: 100px;
   height: 100px;
-  background: linear-gradient(
-    135deg,
-    transparent 50%,
-    rgba(154, 123, 28, 0.08) 50%
-  );
+  background: linear-gradient(135deg, transparent 50%, rgba(154, 123, 28, 0.08) 50%);
   transition: all var(--transition-slow);
 }
 
@@ -580,11 +555,7 @@ a:hover {
 .partner-card:hover::after {
   width: 150px;
   height: 150px;
-  background: linear-gradient(
-    135deg,
-    transparent 50%,
-    rgba(154, 123, 28, 0.12) 50%
-  );
+  background: linear-gradient(135deg, transparent 50%, rgba(154, 123, 28, 0.12) 50%);
 }
 
 .partner-card:active {
@@ -793,12 +764,7 @@ a:hover {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-gold-dark),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
 }
 
 .trust-section::before {
@@ -937,11 +903,7 @@ a:hover {
 }
 
 .partner-hero {
-  background: linear-gradient(
-    180deg,
-    var(--color-bg-secondary) 0%,
-    var(--color-bg-primary) 100%
-  );
+  background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
   padding: var(--space-4xl) 0;
   text-align: center;
   position: relative;
@@ -1450,11 +1412,7 @@ textarea:focus-visible {
 }
 
 .partner-joshua-naylor .partner-hero {
-  background: linear-gradient(
-    135deg,
-    var(--color-accent-primary),
-    var(--color-accent-secondary)
-  );
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
 }
 
 .partner-joshua-naylor .partner-hero-name,
@@ -1487,8 +1445,7 @@ textarea:focus-visible {
 
   /* Dream Living Typography */
   --font-primary: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  --font-headings:
-    "Helvetica Neue", Helvetica, "Segoe UI", Ubuntu, Arial, sans-serif;
+  --font-headings: "Helvetica Neue", Helvetica, "Segoe UI", Ubuntu, Arial, sans-serif;
   --font-decorative: "Playfair Display", serif;
   --font-accent: "Montserrat", sans-serif;
   --spacing-base: 0.9375rem;
@@ -1534,11 +1491,7 @@ textarea:focus-visible {
 }
 
 .partner-tiffany-mcalister .partner-hero {
-  background: linear-gradient(
-    135deg,
-    var(--color-accent-primary),
-    var(--color-accent-hover)
-  );
+  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-hover));
 }
 
 .partner-tiffany-mcalister .partner-hero-name {

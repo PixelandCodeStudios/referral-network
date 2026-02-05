@@ -92,10 +92,7 @@ function storeReferrerId(referrerId) {
 
     // Also store first visit timestamp if not exists
     if (!localStorage.getItem(ANALYTICS_CONFIG.storageKeys.firstVisit)) {
-      localStorage.setItem(
-        ANALYTICS_CONFIG.storageKeys.firstVisit,
-        new Date().toISOString(),
-      );
+      localStorage.setItem(ANALYTICS_CONFIG.storageKeys.firstVisit, new Date().toISOString());
     }
   }
 }
@@ -202,7 +199,7 @@ function initPartnerClickTracking() {
   const partnerCards = document.querySelectorAll(".partner-card");
 
   partnerCards.forEach((card) => {
-    card.addEventListener("click", (e) => {
+    card.addEventListener("click", (_e) => {
       const partnerId = card.getAttribute("data-partner-id");
       const referrerId = getReferrerId();
 
@@ -276,8 +273,7 @@ function updatePartnerPageContext(source, referrerId) {
       contextIndicator.textContent = "From our curated referral network";
     } else {
       contextIndicator.style.display = "block";
-      contextIndicator.textContent =
-        "This profile is part of a trusted referral network";
+      contextIndicator.textContent = "This profile is part of a trusted referral network";
     }
   }
 
@@ -349,22 +345,24 @@ function initContactFormTracking() {
     submitBtn.textContent = "Sending...";
 
     try {
-      const response = await fetch('https://referral-contact-form.contact-newleafllc.workers.dev', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+      const response = await fetch("https://referral-contact-form.contact-newleafllc.workers.dev", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
         // Show success message
-        alert('Thank you! Your message has been sent successfully.');
+        alert("Thank you! Your message has been sent successfully.");
         contactForm.reset();
       } else {
-        throw new Error('Failed to send message');
+        throw new Error("Failed to send message");
       }
     } catch (error) {
-      console.error('Form submission error:', error);
-      alert('Sorry, there was an error sending your message. Please try again or contact us directly.');
+      console.error("Form submission error:", error);
+      alert(
+        "Sorry, there was an error sending your message. Please try again or contact us directly."
+      );
     } finally {
       // Re-enable submit button
       submitBtn.disabled = false;
@@ -388,7 +386,7 @@ function initExternalSiteTracking() {
   const websiteButton = document.getElementById("visit-website-btn");
   if (!websiteButton) return;
 
-  websiteButton.addEventListener("click", (e) => {
+  websiteButton.addEventListener("click", (_e) => {
     const partnerId = websiteButton.getAttribute("data-partner-id");
     const referrerId = getReferrerId();
     const destinationUrl = websiteButton.getAttribute("href");
@@ -417,7 +415,7 @@ function initPhoneTracking() {
   const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
 
   phoneLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
+    link.addEventListener("click", (_e) => {
       const phoneNumber = link.getAttribute("href").replace("tel:", "");
       const partnerId = link.getAttribute("data-partner-id");
       const referrerId = getReferrerId();
@@ -447,7 +445,7 @@ function initEmailTracking() {
   const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
 
   emailLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
+    link.addEventListener("click", (_e) => {
       const email = link.getAttribute("href").replace("mailto:", "").split("?")[0];
       const partnerId = link.getAttribute("data-partner-id");
       const referrerId = getReferrerId();
@@ -480,10 +478,7 @@ function preserveNavigationContext() {
     const href = card.getAttribute("href");
     if (href && !href.includes("ref=")) {
       const separator = href.includes("?") ? "&" : "?";
-      card.setAttribute(
-        "href",
-        href + separator + "ref=" + referrerId + "&source=hub",
-      );
+      card.setAttribute("href", href + separator + "ref=" + referrerId + "&source=hub");
     }
   });
 }
