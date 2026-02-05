@@ -9,7 +9,7 @@ import { createMimeMessage } from "mimetext";
 
 // CORS headers for Pages domain
 const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "https://referral-website-5o3.pages.dev",
+  "Access-Control-Allow-Origin": "https://midlife-mafia.pages.dev",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
 };
