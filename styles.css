@@ -245,6 +245,13 @@ img {
   }
 
   .container {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
   }
@@ -744,9 +751,11 @@ a:hover {
     justify-content: flex-start;
     text-align: left;
     flex-wrap: wrap;
-    font-size: 0.8125rem; /* 13px - slightly smaller on mobile */
-    word-break: break-all; /* Force breaking at any character if needed */
+    font-size: 0.75rem; /* 12px - smaller on mobile */
+    word-break: break-word; /* Break long words */
+    overflow-wrap: anywhere; /* Allow breaking anywhere if needed */
     hyphens: auto; /* Enable hyphenation */
+    max-width: 100%; /* Ensure it doesn't overflow */
   }
 
   .partner-cta {
@@ -981,6 +990,42 @@ a:hover {
   letter-spacing: var(--letter-spacing-wider);
 }
 
+/* Mobile Partner Hero */
+@media (max-width: 768px) {
+  .partner-hero {
+    padding: var(--space-2xl) 0;
+  }
+
+  .partner-hero-avatar {
+    width: 200px;
+    height: 200px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .partner-hero-name {
+    font-size: var(--font-size-2xl);
+  }
+
+  .partner-hero-role {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-hero {
+    padding: var(--space-xl) 0;
+  }
+
+  .partner-hero-avatar {
+    width: 160px;
+    height: 160px;
+  }
+
+  .partner-hero-name {
+    font-size: var(--font-size-xl);
+  }
+}
+
 .partner-content {
   padding: var(--space-4xl) 0;
   flex-grow: 1;
@@ -1013,6 +1058,45 @@ a:hover {
   gap: var(--space-md);
   margin-bottom: var(--space-2xl);
   flex-wrap: wrap;
+}
+
+/* Mobile Partner Content & Actions */
+@media (max-width: 768px) {
+  .partner-content {
+    padding: var(--space-2xl) 0;
+  }
+
+  .partner-actions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .partner-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .contact-form {
+    padding: var(--space-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-content {
+    padding: var(--space-xl) 0;
+  }
+
+  .contact-section {
+    padding: var(--space-xl) 0;
+  }
+
+  .contact-form {
+    padding: var(--space-md);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
