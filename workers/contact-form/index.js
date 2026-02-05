@@ -197,14 +197,14 @@ This form was submitted via the Referral Network website
   });
 
   // Send via Cloudflare Email Workers
-  const message = new EmailMessage(
+  const emailMessage = new EmailMessage(
     env.FROM_EMAIL || "forms@pcs-hub.com",
     env.ADMIN_EMAIL || "pixelandcodestudios@gmail.com",
     msg.asRaw()
   );
 
   try {
-    await env.EMAIL.send(message);
+    await env.EMAIL.send(emailMessage);
     console.log(`Contact form email sent for ${partnerId}`);
   } catch (error) {
     console.error("Failed to send contact form email:", error);
