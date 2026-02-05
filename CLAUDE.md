@@ -10,7 +10,7 @@ A QR code-enabled referral network platform with real-time email notifications a
 
 ## Live URLs
 
-- **Main Site**: https://referral-website-5o3.pages.dev
+- **Main Site**: https://midlife-mafia.pages.dev
 - **Analytics Worker**: https://referral-analytics.contact-newleafllc.workers.dev
 - **Weekly Report Worker**: https://referral-weekly-report.contact-newleafllc.workers.dev
 
@@ -183,7 +183,7 @@ crons = ["0 11 * * 2"]
 Create QR codes pointing to:
 
 ```
-https://referral-website-5o3.pages.dev?ref=qr-LOCATION-NUMBER
+https://midlife-mafia.pages.dev?ref=qr-LOCATION-NUMBER
 ```
 
 Examples:
@@ -301,7 +301,7 @@ wrangler d1 execute referral-analytics-db --local --command="SELECT * FROM analy
 
 Workers accept requests from:
 
-- https://referral-website-5o3.pages.dev
+- https://midlife-mafia.pages.dev
 - localhost (for development)
 
 ### Data Privacy
