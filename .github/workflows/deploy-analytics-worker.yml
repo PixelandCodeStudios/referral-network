@@ -24,7 +24,11 @@ jobs:
 
       - name: Install dependencies
         working-directory: workers/analytics
-        run: npm install
+        run: |
+          npm install
+          cd ..
+          # Create node_modules symlink at workers level so shared modules can resolve dependencies
+          ln -sf analytics/node_modules node_modules
 
       - name: Deploy to Cloudflare Workers
         working-directory: workers/analytics
