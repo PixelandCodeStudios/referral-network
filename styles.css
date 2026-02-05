@@ -1115,7 +1115,7 @@ a:hover {
   .form-input,
   .form-textarea {
     font-size: 0.875rem; /* 14px - smaller for better placeholder visibility */
-    padding: 0.875rem 0.625rem; /* Reduced horizontal padding on mobile */
+    padding: 0.875rem 0.5rem; /* Further reduced horizontal padding on mobile */
   }
 
   .form-label {
