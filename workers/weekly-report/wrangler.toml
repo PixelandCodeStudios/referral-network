@@ -3,6 +3,7 @@ name = "referral-weekly-report"
 main = "index.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
+account_id = "45d1e1be26c9a77b911d7b5b0225945a"
 
 # Bind D1 database (same as analytics worker)
 [[d1_databases]]
