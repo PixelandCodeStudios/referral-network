@@ -1,13 +1,19 @@
 # Cloudflare Worker - Weekly Report (Scheduled)
 name = "referral-weekly-report"
 main = "index.js"
-compatibility_date = "2024-01-01"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
 
 # Bind D1 database (same as analytics worker)
 [[d1_databases]]
 binding = "DB"
 database_name = "referral-analytics-db"
 database_id = "50aa2341-12ad-406d-8905-f40b398c8dc0"
+
+# Email Workers binding
+[[send_email]]
+name = "EMAIL"
+destination_address = "pixelandcodestudios@gmail.com"
 
 # Cron trigger: Disabled due to account limit
 # You can trigger manually via HTTP POST or upgrade to Workers Paid for more crons
@@ -16,5 +22,5 @@ database_id = "50aa2341-12ad-406d-8905-f40b398c8dc0"
 
 # Environment variables
 [vars]
-FROM_EMAIL = "reports@referralnetwork.com"
+FROM_EMAIL = "reports@pcs-hub.com"
 FROM_NAME = "Referral Network Analytics"

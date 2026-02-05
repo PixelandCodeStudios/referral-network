@@ -1,0 +1,44 @@
+{
+  "name": "referral-network-stress-tests",
+  "version": "1.0.0",
+  "description": "Comprehensive stress testing suite for referral network website",
+  "type": "module",
+  "main": "run-all-tests.js",
+  "scripts": {
+    "test": "node run-all-tests.js",
+    "test:baseline": "node run-all-tests.js --phase baseline",
+    "test:load": "node run-all-tests.js --phase load",
+    "test:security": "node run-all-tests.js --phase security",
+    "test:performance": "node run-all-tests.js --phase performance",
+    "test:flows": "node run-all-tests.js --phase flows",
+    "test:report": "node utils/report-generator.js",
+    "test:worker": "node load-testing/worker-load.js",
+    "test:latency": "node performance-testing/worker-latency.js",
+    "test:rate-limit": "node security-testing/rate-limit-test.js",
+    "test:resources": "node performance-testing/resource-timing.js",
+    "test:user-flow": "node scenarios/real-user-flow.js"
+  },
+  "keywords": [
+    "stress-testing",
+    "load-testing",
+    "performance",
+    "cloudflare",
+    "workers"
+  ],
+  "author": "Pixel & Code Studios",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "cli-progress": "^3.12.0",
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "puppeteer": "^21.11.0"
+  },
+  "optionalDependencies": {
+    "winston": "^3.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

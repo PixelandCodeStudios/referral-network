@@ -1,0 +1,87 @@
+{
+  "baseline": {
+    "name": "Baseline Traffic",
+    "description": "Normal traffic pattern for baseline metrics",
+    "requestRate": 5,
+    "duration": 300,
+    "concurrency": 5,
+    "eventTypes": ["qr_scan", "partner_click", "partner_page_view_from_hub", "contact_submit"]
+  },
+  "gradualRamp": {
+    "name": "Gradual Load Ramp",
+    "description": "Gradually increase load from 1 to 100 req/sec",
+    "startRate": 1,
+    "endRate": 100,
+    "duration": 300,
+    "rampType": "linear"
+  },
+  "spike": {
+    "name": "Traffic Spike",
+    "description": "Sudden spike from 0 to 500 req/sec",
+    "baselineRate": 5,
+    "spikeRate": 500,
+    "spikeDuration": 120,
+    "totalDuration": 300
+  },
+  "sustained": {
+    "name": "Sustained High Load",
+    "description": "Constant 50 req/sec for 30 minutes",
+    "requestRate": 50,
+    "duration": 1800,
+    "concurrency": 50
+  },
+  "burst": {
+    "name": "Burst Test",
+    "description": "1000 requests in 10 seconds",
+    "totalRequests": 1000,
+    "duration": 10,
+    "concurrency": 100
+  },
+  "rateLimitTest": {
+    "name": "Rate Limit Abuse Simulation",
+    "description": "Test unlimited request acceptance",
+    "requestRate": 1000,
+    "duration": 60,
+    "singleIP": true
+  },
+  "userFlows": {
+    "qrScanFlow": {
+      "name": "QR Scan to Conversion",
+      "steps": [
+        {"action": "scan_qr", "delay": 0},
+        {"action": "view_hub", "delay": 2000},
+        {"action": "click_partner", "delay": 3000},
+        {"action": "view_partner_page", "delay": 2000},
+        {"action": "click_website", "delay": 5000}
+      ]
+    },
+    "contactFlow": {
+      "name": "Contact Form Submission",
+      "steps": [
+        {"action": "scan_qr", "delay": 0},
+        {"action": "click_partner", "delay": 2000},
+        {"action": "view_partner_page", "delay": 2000},
+        {"action": "submit_contact", "delay": 8000}
+      ]
+    },
+    "directAccess": {
+      "name": "Direct Partner Page Access",
+      "steps": [
+        {"action": "direct_visit", "delay": 0},
+        {"action": "view_partner_page", "delay": 3000},
+        {"action": "exit", "delay": 10000}
+      ]
+    },
+    "hubBrowse": {
+      "name": "Hub Browsing",
+      "steps": [
+        {"action": "view_hub", "delay": 0},
+        {"action": "click_partner", "delay": 3000},
+        {"action": "back_to_hub", "delay": 5000},
+        {"action": "click_partner", "delay": 3000},
+        {"action": "back_to_hub", "delay": 5000},
+        {"action": "click_partner", "delay": 3000}
+      ]
+    }
+  }
+}

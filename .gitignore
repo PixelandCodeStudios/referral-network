@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Workers
+workers/*/node_modules/
+workers/node_modules/
+workers/**/node_modules/
+workers/**/.cache/
+
+# Stress tests
+stress-tests/node_modules/
+stress-tests/reports/*.html
+stress-tests/reports/*.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Wrangler
+.wrangler/
+wrangler.toml.backup

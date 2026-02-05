@@ -15,6 +15,12 @@ database_id = "50aa2341-12ad-406d-8905-f40b398c8dc0"
 name = "EMAIL"
 destination_address = "pixelandcodestudios@gmail.com"
 
+# KV namespace for rate limiting
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "4f49c4fb202f4f25be8a1c1adbe80665"
+preview_id = "040940f91bf64ca8bfc34e5024d9bbd3"
+
 # Environment variables
 [vars]
 FROM_EMAIL = "notifications@pcs-hub.com"

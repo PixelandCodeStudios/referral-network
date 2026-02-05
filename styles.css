@@ -1051,6 +1051,11 @@ a:hover {
   margin-left: var(--space-sm);
 }
 
+/* Icon spacing inside buttons (e.g., external link icons) */
+.btn svg {
+  margin-left: 0.5rem;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    CONTACT FORM — Elegant Inputs
    ═══════════════════════════════════════════════════════════════ */
