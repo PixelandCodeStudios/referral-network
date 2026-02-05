@@ -33,7 +33,7 @@ const ADMIN_EMAIL = "pixelandcodestudios@gmail.com";
 export function shouldNotifyPartner(event) {
   const notifiableEvents = [
     "partner_click", // When card is clicked on hub
-    "partner_page_view_from_hub", // When partner page is viewed
+    // "partner_page_view_from_hub", // Disabled - redundant with partner_click
     // "contact_submit", // Disabled - handled by contact-form worker
     "external_site_click", // When their website link is clicked
     "phone_click", // When phone number is clicked
