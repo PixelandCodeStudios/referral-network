@@ -95,71 +95,66 @@ async function sendContactFormEmail(env, formData) {
     addr: env.FROM_EMAIL || "forms@pcs-hub.com"
   });
   msg.setRecipient(env.ADMIN_EMAIL || "pixelandcodestudios@gmail.com");
-  msg.setSubject(`New Contact Form: ${partnerId}`);
+  msg.setSubject(`New Contact Form Submission - ${partnerId}`);
 
-  // HTML email body - standard contact form notification
+  // HTML email body
   const htmlBody = `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f4f4f4; margin: 0; padding: 20px; }
-    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #ddd; }
-    .header { background: #333; color: #fff; padding: 20px; text-align: center; }
-    .content { padding: 30px; }
-    .field { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
-    .field:last-child { border-bottom: none; }
-    .label { font-weight: bold; color: #555; display: block; margin-bottom: 5px; }
-    .value { color: #333; }
-    .footer { background: #f9f9f9; padding: 15px; text-align: center; font-size: 12px; color: #777; border-top: 1px solid #eee; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #1a1816 0%, #2d2b28 100%); color: #c9a227; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+    .content { background: #fff; padding: 30px; border: 1px solid #e5e5e5; border-top: none; }
+    .field { margin-bottom: 20px; }
+    .label { font-weight: 600; color: #666; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+    .value { margin-top: 5px; font-size: 16px; color: #1a1816; }
+    .message-box { background: #f8f8f8; padding: 15px; border-radius: 4px; border-left: 3px solid #c9a227; }
+    .meta { background: #f0f0f0; padding: 15px; margin-top: 20px; border-radius: 4px; font-size: 13px; }
+    .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h2 style="margin: 0;">New Contact Form Submission</h2>
+      <h1 style="margin: 0; font-size: 24px;">📩 New Contact Form</h1>
+      <p style="margin: 10px 0 0; opacity: 0.9;">Referral Network Submission</p>
     </div>
 
     <div class="content">
       <div class="field">
-        <span class="label">Name:</span>
-        <span class="value">${name}</span>
+        <div class="label">From</div>
+        <div class="value">${name}</div>
       </div>
 
       <div class="field">
-        <span class="label">Email:</span>
-        <span class="value"><a href="mailto:${email}">${email}</a></span>
+        <div class="label">Email</div>
+        <div class="value"><a href="mailto:${email}">${email}</a></div>
       </div>
 
       <div class="field">
-        <span class="label">Phone:</span>
-        <span class="value">${phone}</span>
+        <div class="label">Phone</div>
+        <div class="value">${phone}</div>
       </div>
 
       <div class="field">
-        <span class="label">Message:</span>
-        <div class="value" style="margin-top: 10px; white-space: pre-wrap;">${message}</div>
+        <div class="label">Message</div>
+        <div class="message-box">${message.replace(/\n/g, '<br>')}</div>
       </div>
 
-      <div class="field">
-        <span class="label">Partner:</span>
-        <span class="value">${partnerId}</span>
-      </div>
-
-      <div class="field">
-        <span class="label">Referral Source:</span>
-        <span class="value">${referrerId === 'none' ? 'Direct' : referrerId} (${source})</span>
-      </div>
-
-      <div class="field">
-        <span class="label">Submitted:</span>
-        <span class="value">${new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'full', timeStyle: 'short' })}</span>
+      <div class="meta">
+        <strong>Tracking Info:</strong><br>
+        Partner: ${partnerId}<br>
+        Referrer: ${referrerId}<br>
+        Source: ${source}<br>
+        Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST
       </div>
     </div>
 
     <div class="footer">
-      This form was submitted via the Referral Network website
+      Sent via Referral Network Contact Form
     </div>
   </div>
 </body>
@@ -168,22 +163,21 @@ async function sendContactFormEmail(env, formData) {
 
   // Plain text fallback
   const textBody = `
-NEW CONTACT FORM SUBMISSION
+New Contact Form Submission
 
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
+FROM: ${name}
+EMAIL: ${email}
+PHONE: ${phone}
 
-Message:
+MESSAGE:
 ${message}
 
 ---
+TRACKING INFO:
 Partner: ${partnerId}
-Referral Source: ${referrerId === 'none' ? 'Direct' : referrerId} (${source})
-Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'full', timeStyle: 'short' })}
-
----
-This form was submitted via the Referral Network website
+Referrer: ${referrerId}
+Source: ${source}
+Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} EST
   `.trim();
 
   msg.addMessage({
