@@ -327,6 +327,7 @@ a:hover {
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: var(--color-bg-primary);
 }
 
 /* Ambient glow behind header */
@@ -419,6 +420,7 @@ a:hover {
   padding-top: var(--space-lg);
   padding-bottom: var(--space-lg);
   text-align: left;
+  background: var(--color-bg-primary) !important;
 }
 
 .site-header--compact::before,
@@ -997,8 +999,8 @@ a:hover {
   }
 
   .partner-hero-avatar {
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
     margin-bottom: var(--space-lg);
   }
 
@@ -1017,8 +1019,8 @@ a:hover {
   }
 
   .partner-hero-avatar {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
   }
 
   .partner-hero-name {
