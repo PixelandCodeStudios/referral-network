@@ -473,15 +473,13 @@ a:hover {
   }
 
   .site-header--compact {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .header-brand-link {
-    justify-content: center;
-  }
-
-  .site-emblem--small {
-    display: none;
+    margin: 0;
   }
 
   .site-title {
