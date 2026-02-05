@@ -677,6 +677,9 @@ a:hover {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-md);
   transition: all var(--transition-base);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .partner-contact-item:hover {
@@ -738,7 +741,12 @@ a:hover {
   }
 
   .partner-contact-item {
-    justify-content: center;
+    justify-content: flex-start;
+    text-align: left;
+    flex-wrap: wrap;
+    font-size: 0.8125rem; /* 13px - slightly smaller on mobile */
+    word-break: break-all; /* Force breaking at any character if needed */
+    hyphens: auto; /* Enable hyphenation */
   }
 
   .partner-cta {
