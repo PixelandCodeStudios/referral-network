@@ -1,0 +1,33 @@
+name: Deploy Analytics Worker
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'workers/analytics/**'
+      - '.github/workflows/deploy-analytics-worker.yml'
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Analytics Worker to Cloudflare
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: workers/analytics
+        run: npm install
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: workers/analytics
