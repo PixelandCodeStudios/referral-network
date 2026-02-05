@@ -14,7 +14,7 @@
 import puppeteer from 'puppeteer';
 import chalk from 'chalk';
 
-const BASE_URL = 'https://referral-website-5o3.pages.dev';
+const BASE_URL = 'https://referral-website-53j.pages.dev';
 
 const PAGES = [
   { path: '/', name: 'Homepage' },
