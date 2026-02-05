@@ -472,6 +472,14 @@ a:hover {
     padding-bottom: var(--space-2xl);
   }
 
+  .site-header--compact {
+    text-align: center;
+  }
+
+  .header-brand-link {
+    justify-content: center;
+  }
+
   .site-title {
     font-size: var(--font-size-3xl);
   }
