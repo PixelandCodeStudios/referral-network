@@ -20,6 +20,7 @@ const PARTNER_EMAILS = {
   "tom-berry": "pixelandcodestudios@gmail.com",
   "jordan-clay": "pixelandcodestudios@gmail.com",
   "teresa-fitzpatrick": "pixelandcodestudios@gmail.com",
+  "kelly-love": "pixelandcodestudios@gmail.com",
 };
 
 const PARTNER_NAMES = {
@@ -29,6 +30,7 @@ const PARTNER_NAMES = {
   "tom-berry": "Tom Berry - Longview Wealth Advisors",
   "jordan-clay": "Jordan Clay - Select Insurance Providers",
   "teresa-fitzpatrick": "Teresa Fitzpatrick - Fitzpatrick & Fitzpatrick Attorneys",
+  "kelly-love": "Kelly Love - Love & Company CPAs",
 };
 
 // Helper function to convert QR code ID to partner first name
@@ -47,6 +49,8 @@ function getPartnerNameFromQR(qrCode) {
     "qr-jordan-clay": "jordan-clay",
     "qr-teresa": "teresa-fitzpatrick",
     "qr-teresa-fitzpatrick": "teresa-fitzpatrick",
+    "qr-kelly": "kelly-love",
+    "qr-kelly-love": "kelly-love",
   };
 
   const matchedPartnerId = qrToPartner[qrCode.toLowerCase()];

@@ -15,6 +15,7 @@ export const PARTNER_EMAILS = {
   "tom-berry": "info@longviewwealthadvisors.com",
   "jordan-clay": "jordan@selectinsuranceproviders.com",
   "teresa-fitzpatrick": "Teresa@Fitzpatricklawyers.com",
+  "kelly-love": "kelly@thachercpa.com",
 };
 
 export const PARTNER_NAMES = {
@@ -24,6 +25,7 @@ export const PARTNER_NAMES = {
   "tom-berry": "Tom Berry",
   "jordan-clay": "Jordan Clay",
   "teresa-fitzpatrick": "Teresa Fitzpatrick",
+  "kelly-love": "Kelly Love",
 };
 
 // Admin email - receives copy of all partner notifications
