@@ -16,6 +16,7 @@ export const PARTNER_EMAILS = {
   "jordan-clay": "jordan@selectinsuranceproviders.com",
   "teresa-fitzpatrick": "Teresa@Fitzpatricklawyers.com",
   "kelly-love": "kelly@thachercpa.com",
+  "jamie-marcario": "jamie@bravalaw.com",
 };
 
 export const PARTNER_NAMES = {
@@ -26,6 +27,7 @@ export const PARTNER_NAMES = {
   "jordan-clay": "Jordan Clay",
   "teresa-fitzpatrick": "Teresa Fitzpatrick",
   "kelly-love": "Kelly Love",
+  "jamie-marcario": "Jamie Marcario",
 };
 
 // Admin email - receives copy of all partner notifications
